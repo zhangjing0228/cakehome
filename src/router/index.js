@@ -1,17 +1,28 @@
 import Vue from 'vue'
+import Index from '../views/shopcart/Index.vue'
+import Home from '../views/shopcart/Home.vue'
+import Test from '../views/classify1/Test.vue'
 import VueRouter from 'vue-router'
-import Index from '../views/Index'
+import { Header } from 'mint-ui';
+
 
 Vue.use(VueRouter)
+Vue.component(Header.name, Header);
+
 
 const routes = [
-
-
-
   {
-    path:'/',
+    path:'/index',
     component:Index
   },
+  {
+    path: '/',
+    component:Home
+  },
+  {
+    path: '/test',
+    component : Test
+  }
  
   // {
     // path: '/about',
@@ -24,6 +35,8 @@ const routes = [
  ]
 
 const router = new VueRouter({
+   mode: "history",
+  base: process.env.BASE_URL,
   routes
 })
 
