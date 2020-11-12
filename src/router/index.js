@@ -4,13 +4,17 @@ import Home from '../views/shopcart/Home.vue'
 import Test from '../views/classify1/Test.vue'
 import VueRouter from 'vue-router'
 import { Header } from 'mint-ui';
-
+import cart from '../views/shopcart/cart.vue'
 
 Vue.use(VueRouter)
 Vue.component(Header.name, Header);
 
 
 const routes = [
+  {
+    path:'/cart',
+    component:cart
+  },
   {
     path:'/index',
     component:Index
