@@ -1,0 +1,174 @@
+<template>
+  <div>
+    <!-- 顶部导航开始 -->
+    <mt-header class="flowertitle" title="最美鲜花预定"> </mt-header>
+    <!-- 顶部导航结束 -->
+    <!-- 轮播图开始 -->
+    <mt-swipe class="swiper">
+      <mt-swipe-item v-for="(n, i) of flowerbanners" :key="i">
+        <img class="img" :src="n.pic" />
+      </mt-swipe-item>
+    </mt-swipe>
+    <!-- 轮播图结束 -->
+    <!-- 领券开始 -->
+    <div class="lqbtn" @click="discounts">
+      <span>全国鲜花3小时配送,新人订花立减100元</span>
+    </div>
+    <!-- 领券结束 -->
+    <!-- 鲜花分类开始 -->
+    <div>
+      <div class="biaoti">
+        <h4>鲜花分类</h4>
+        <p>Flower classification</p>
+      </div>
+      <ul class="flowerclass">
+        <li class="flowerclass-item" v-for="(n, i) of flowerclass" :key="i">
+          <router-link :to="`/classlist/${n.category}`">
+            <div>
+              <p>{{ n.category }}</p>
+              <span>{{ n.detail }}</span>
+            </div>
+            <img :src="n.categoryimg" alt="" />
+          </router-link>
+        </li>
+      </ul>
+    </div>
+    <!-- 鲜花分类结束 -->
+    <!-- 人气热卖开始 -->
+    <div class="rqrm">－<span>人气热卖</span>－</div>
+    <ul class="selling-list">
+      <li class="selling-listitem" v-for="(n, i) of flower" :key="i">
+        <router-link :to="`/flowerdetail/${n.fid}`">
+          <img :src="n.img" alt="" />
+          <p class="p1">{{ n.title }}</p>
+          <p class="p2">
+            <span>¥{{ n.price }}</span
+            ><s>¥{{ n.price1 }}</s>
+          </p>
+        </router-link>
+      </li>
+    </ul>
+    <!-- 人气热卖结束 -->
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      flowerbanners: "",
+      flowerclass: "",
+      flower: "",
+    };
+  },
+  methods: {
+    discounts() {
+      this.$router.push("/discounts");
+    },
+    classlist(a) {},
+  },
+  mounted() {
+    this.axios.get("/flower").then((res) => {
+      console.log(res.data);
+      this.flowerbanners = res.data.results;
+      this.flowerclass = res.data.result;
+      this.flower = res.data.data;
+    });
+  },
+};
+</script>
+
+<style>
+.flowertitle {
+  background: rgba(161, 46, 46, 0.349);
+  color: black;
+}
+.img {
+  width: 100%;
+  height: 100%;
+}
+.swiper {
+  height: 180px;
+  width: 100%;
+}
+.lqbtn {
+  text-align: center;
+  margin: 15px 0;
+}
+.lqbtn > span {
+  background: rgba(161, 46, 46, 0.349);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 8px;
+  color: #ff5f1c;
+}
+.biaoti {
+  text-align: center;
+}
+.biaoti h4 {
+  font-size: 20px;
+  color: #ff5f1c;
+}
+.biaoti p {
+  color: #ff5f1c;
+  font-family: "Palace Script MT";
+  font-size: 24px;
+}
+.flowerclass {
+  margin: 5px 0;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.flowerclass-item {
+  margin-top: 3px;
+  width: 32.5%;
+  background: #eee;
+}
+.flowerclass-item a {
+  display: flex;
+  justify-content: space-between;
+}
+.flowerclass-item img {
+  width: 50px;
+  height: 50px;
+}
+.flowerclass-item span {
+  font-size: 8px;
+}
+.rqrm {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 20px;
+}
+.selling-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+}
+.selling-listitem {
+  width: 49%;
+  height: 60%;
+  text-align: center;
+  background: #eee;
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+}
+.selling-listitem img {
+  width: 100%;
+  height: 60%;
+}
+.p1 {
+  font-size: 20px;
+  margin: 8px;
+}
+.p2 span {
+  color: #ff5f1c;
+  margin-right: 10px;
+}
+</style>

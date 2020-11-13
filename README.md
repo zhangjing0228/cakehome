@@ -1,4 +1,4 @@
-# cakehome
+# scaffolding
 
 ## Project setup
 ```
