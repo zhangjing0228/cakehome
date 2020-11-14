@@ -6,19 +6,18 @@
       <mt-button icon="back"></mt-button>
     </router-link>
       </mt-header>
-      <div><hr></div>
   </div>
  <div class="shop_car_body">
+	 
        <ul>
     		<li v-for="(item, index) of list" :key="index">
     			<div class="car_list_top">
     				<div class="car_list_t_l">
     					<!-- 选择商品 -->
-    					<div class="input_check">
-    						<span
-								:class="item.checked" 
-    						@click="selectGoods(item)"><img src="../../assets/imgs/圆圈.png" ></span>
+    					<div class="input_check" :class="{'selector-active': !item.checked}" @click="selectGoods(item)">
+    						<img src="../../assets/imgs/tick.svg" >
     					</div>
+						 
     					<!-- 选择商品 end -->
     					<P>商家: {{item.shop_name}}</P>
     				</div>
@@ -30,7 +29,7 @@
     			</div>
     			<div class="car_list_center">
     				<div class="car_list_c_l">
-    					<img :src="'http://'+item.goods_img" alt="">
+    					<img :src="'http:'+item.goods_img" >
     				</div>
     				<div class="car_list_c_r">
     					<p>{{item.goods_name}}</p>
@@ -38,7 +37,7 @@
     						<p>￥{{item.price}}</p>
     						<p class="select_num_input">
     							<img src="../../assets/imgs/减.png"  @click="sub(item.sales_num,index)">
-    							<div :value="item.sales_num" disabled>1</div>
+    							<input :value="item.sales_num" disabled >
     							<img src="../../assets/imgs/添加.png"  @click="plus(item.sales_num,index)">
     						</p>
     					</div>
@@ -56,7 +55,7 @@
     			<p>取消全选</p>
     		</div>
     		<div class="car_footer_r">
-    			<span>合计：{{(totalMoney,2)}}</span>
+    			<span>合计：{{totalMoney}}</span>
     			<p @click="toDo()">结算({{checkNum}})</p>
     		</div>
     	</div>
@@ -66,6 +65,7 @@
 </template>
 
 <script>
+import * as setNum  from "../../utils/setDe.js"
 export default {
 data(){
     return{
@@ -73,10 +73,15 @@ data(){
         selectId:[],  //选中的商品id
     	totalMoney: 0,  //总价
     	checkNum: 0,  //选择的商品数量(结算需要显示的数量)
-    	checkAllFlag:false,  //是否全选
+		checkAllFlag:false,  //是否全选
+		checked:true,
       }
-    },
+	},
+computed:{
+
+	},
 methods:{
+
 		// 点击结算
 		toDo(){
 			if(this.checkNum <= 0){
@@ -95,6 +100,8 @@ methods:{
 		},
 		// (单选)选择商品
 		selectGoods(item){
+			console.log(item)
+			// this.checked=!this.checked;
 			//判断是否未定义，如果没点击过按钮是没有注册的，则需要先注册checked属性
 			if(typeof item.checked =='undefined'){
 				this.$set(item,"checked",true);
@@ -102,6 +109,7 @@ methods:{
 			}else{
 				//  如果已经注册，则设置checked否(这里不能设置为false,因为当已经注册过之后再点击为flase，那么再点击一次则为true)
 				item.checked = !item.checked;
+				console.log(checked)
 				item.checked ? this.checkNum ++ : this.checkNum --;
 			}
 			// 求总价
@@ -125,11 +133,14 @@ methods:{
 		},
 		// 求总价
 		totalPrice(){
-			var _this = this;
-			this.totalMoney = 0;
+			
+			let totalMoney = 0;
 			this.list.forEach((item,index)=>{
 				if(item.checked){
-					_this.totalMoney += this.$setNum.accMul(item.price,item.sales_num);
+					console.log(`price: ${item.price} sales_num: ${item.sales_num}`)
+					totalMoney += item.price*item.sales_num;
+					this.totalMoney = totalMoney;
+					console.log(`totalMoney:${totalMoney}`)
 				}
 			});
 		},
@@ -227,7 +238,7 @@ created(){
     mounted(){
 		console.log("********************************8")
 		this.getList();
-    
+	    this.totalPrice();
 	},
 	
 }
@@ -238,6 +249,19 @@ created(){
 	  margin: 0;
 	  padding: 0;
 	 
+  }
+   .input_check{
+    position: relative;
+    margin: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+  }
+  .selector-active {
+    background-color: #ff8198;
+    border-color: #ff8198;
   }
 	.mint-header{
 		background-color: pink;
@@ -322,7 +346,7 @@ created(){
 	}
 	ul>li>.car_list_center>.car_list_c_r>.goods_intor{
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 		align-items: center;
 		width: 100%;
 	}
@@ -330,6 +354,13 @@ created(){
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+	ul>li>.car_list_center>.car_list_c_r>.goods_intor>.select_num_input>input{
+		text-align: center;
+		width: 37px;
+		height: 25px;
+		border: none;
+		outline: none;
 	}
 	ul>li>.car_list_center>.car_list_c_r>.goods_intor>span{
 		display: flex;
@@ -348,7 +379,7 @@ created(){
 	}
 	.shop_car_body>.car_footer{
 		width: 100%;
-		border-top: 2px #eee;
+		border-top: 2px rgb(218, 215, 215) solid;
 		position: fixed;
 		left: 0;
 		bottom: 0;
