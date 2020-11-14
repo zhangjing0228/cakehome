@@ -4,12 +4,12 @@ import Index from "../views/Index.vue";
 import Home from '../views/index/Home.vue';
 import Cart from '../views/shopcart/Cart.vue'
 
+
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path:'/home',
-    component:Home
+const routes = [{
+    path: '/home',
+    component: Home
   },
   {
     path: "/",
@@ -41,6 +41,16 @@ const routes = [
     name: "Flowerdetail",
     component: () => import("../views/flowers/Flowerdetail.vue"),
   },
+  {
+    path: '/ify',
+    name: 'Ify',
+    component: () => import('../views/classify1/Ify.vue')
+  },
+  {
+    path: '/page',
+    name: 'Page',
+    component: () => import('../views/classify1/Page.vue')
+  }
 ];
 
 const router = new VueRouter({
