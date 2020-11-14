@@ -395,6 +395,6 @@ created(){
 		padding: 0px 20px;
 		border-radius: 30px;
 		background: linear-gradient(45deg,#ff6924,#fe8701);
-	}
+	} 
  </style>
  
