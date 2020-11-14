@@ -8,7 +8,6 @@
       </mt-header>
   </div>
  <div class="shop_car_body">
-	 
        <ul>
     		<li v-for="(item, index) of list" :key="index">
     			<div class="car_list_top">
