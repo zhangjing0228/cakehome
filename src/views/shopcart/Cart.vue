@@ -16,7 +16,7 @@
     					<!-- 选择商品 -->
     					<div class="input_check">
     						<span
-								:class="{'ico_gou_on':item.checked}" 
+								:class="item.checked" 
     						@click="selectGoods(item)"><img src="../../assets/imgs/圆圈.png" ></span>
     					</div>
     					<!-- 选择商品 end -->
@@ -24,13 +24,13 @@
     				</div>
     				<div class="car_list_t_r">
     					<p class="ico_del" @click="delGoods(item.goods_id,index)">
-							<img src="../../assets/imgs/删除.png" alt="">
+							<img src="../../assets/imgs/删除.png" >
 						</p>
     				</div>
     			</div>
     			<div class="car_list_center">
     				<div class="car_list_c_l">
-    					<img :src="'http:'+item.goods_img" alt="">
+    					<img :src="'http://'+item.goods_img" alt="">
     				</div>
     				<div class="car_list_c_r">
     					<p>{{item.goods_name}}</p>
@@ -254,13 +254,16 @@ created(){
 		width: 100%;
 		font-size: 16px;
 	}
-	
+	ul{
+		margin-bottom:85px ;
+		width: 100%;
+	}
 	ul>li{
 		 list-style: none;
-		border-radius: 26px;
-		background-color: #fff;
+		border-radius: 10px;
+		background-color: rgb(248, 240, 240);
 		 font-size: 14px;
-		 margin-top: 20px;
+		 margin-top: 30px;
 	}
 	ul>li>.car_list_top{
 		display: flex;
@@ -344,49 +347,52 @@ created(){
 		margin: 2px;
 	}
 	.shop_car_body>.car_footer{
+		width: 100%;
 		border-top: 2px #eee;
 		position: fixed;
 		left: 0;
 		bottom: 0;
 		background-color: #fff;
-		height: 88px;
-		font-size: 16px;
+		height: 80px;
+		font-size: 14px;
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 		align-items: center;
-		padding: 0 24px;
 	}
-	.shop_car_body>.car_foote>.car_footer_l{
+	.shop_car_body>.car_footer>.car_footer_l{
 		font-size: 16px;
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
 	}
-	.shop_car_body>.car_foote>.car_footer_l>p{
+	.shop_car_body>.car_footer>.car_footer_l>p{
 		margin-left: 20px;
 	}
-	.shop_car_body>.car_foote>.car_footer_l>span{
+	.shop_car_body>.car_footer>.car_footer_l>span{
 		display: block;
 		width: 36px;
 		height: 36px;
 		background-size: 36px 36px;
 	}
-	.shop_car_body>.car_foote>.car_footer_r{
+	.shop_car_body>.car_footer>.car_footer_r{
+		
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
 	}
-	.shop_car_body>.car_foote>.car_footer_r>span{
+	.shop_car_body>.car_footer>.car_footer_r>span{
+		text-align: center;
 		display: block;
-		margin-right: 30px;
+		margin-right: 60px;
+		font-size: 16px;
 	}
-	.shop_car_body>.car_foote>.car_footer_r>p{
+	.shop_car_body>.car_footer>.car_footer_r>p{
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		color: #fff;
-		height: 60px;
-		padding: 0 30px;
+		height: 35px;
+		padding: 0px 20px;
 		border-radius: 30px;
 		background: linear-gradient(45deg,#ff6924,#fe8701);
 	}
