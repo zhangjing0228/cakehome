@@ -3,10 +3,25 @@ import VueRouter from "vue-router";
 import Index from "../views/Index.vue";
 import Home from '../views/index/Home.vue';
 import Cart from '../views/shopcart/Cart.vue';
+import Pay from '../views/shopcart/Pay.vue'
+import ProductDetail from '../views/shopcart/ProductDetail.vue'
+import Dingdan from '../views/shopcart/Dingdan.vue'
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path:'/dingdan',
+    component:Dingdan
+  },
+  {
+    path:'/productdetail',
+    component:ProductDetail
+  },
+  {
+    path:'/pay',
+    component:Pay
+  },
   {
     path: '/home',
     component: Home
