@@ -1,3 +1,5 @@
+// 购物车没选择也会出现价格    结算数量错误  选择支付方式按钮会全选
+
 <template>
 <div class="cart">
   <div class="page" >
@@ -5,7 +7,7 @@
     <router-link to="/" slot="left">
       <mt-button icon="back"></mt-button>
     </router-link>
-      </mt-header>
+    </mt-header>
   </div>
  <div class="shop_car_body">
        <ul>
@@ -13,16 +15,16 @@
     			<div class="car_list_top">
     				<div class="car_list_t_l">
     					<!-- 选择商品 -->
-    					<div class="input_check" :class="{'selector-active': !item.checked}" @click="selectGoods(item)">
+    					<div class="input_check" :class="{'selector-active': item.checked}" @click="selectGoods(item)">
     						<img src="../../assets/imgs/tick.svg" >
     					</div>
 						 
     					<!-- 选择商品 end -->
     					<P>商家: {{item.shop_name}}</P>
     				</div>
-    				<div class="car_list_t_r">
-    					<p class="ico_del" @click="delGoods(item.goods_id,index)">
-							<img src="../../assets/imgs/删除.png" >
+    				<div class="car_list_t_r"  @click="delGoods(item.goods_id,index)">
+    					<p class="ico_del" >
+							<img  src="../../assets/imgs/删除.png" >
 						</p>
     				</div>
     			</div>
@@ -45,16 +47,16 @@
     		</li>
     	</ul>
         <div class="car_footer">
-    		<div class="car_footer_l" v-show="!checkAllFlag">
-    			<span  @click="checkAll(true)"><img src="../../assets/imgs/选中.png" alt=""></span>
+    		<div class="car_footer_l"  :class="{'selector-active': allActive}">
+    			<span  @click="checkAll(!allActive)"><img src="../../assets/imgs/tick.svg" alt=""></span>
     			<p>全选</p>
     		</div>
-    		<div class="car_footer_l" v-show="checkAllFlag">
-    			<span @click="checkAll(false)"><img src="../../assets/imgs/圆圈.png" alt=""></span>
+    		<!-- <div class="car_footer_l" v-show="checkAllFlag" :class="{'selector-active': allActive}">
+    			<span @click="checkAll(false)"><img src="../../assets/imgs/tick.svg" alt=""></span>
     			<p>取消全选</p>
-    		</div>
+    		</div> -->
     		<div class="car_footer_r">
-    			<span>合计：{{totalMoney}}</span>
+    			<span>合计：￥{{totalMoney}}</span>
     			<p @click="toDo()">结算({{checkNum}})</p>
     		</div>
     	</div>
@@ -65,133 +67,11 @@
 
 <script>
 import * as setNum  from "../../utils/setDe.js"
+import {MessageBox} from 'mint-ui' 
 export default {
 data(){
     return{
-        list: [],
-        selectId:[],  //选中的商品id
-    	totalMoney: 0,  //总价
-    	checkNum: 0,  //选择的商品数量(结算需要显示的数量)
-		checkAllFlag:false,  //是否全选
-		checked:true,
-      }
-	},
-computed:{
-
-	},
-methods:{
-
-		// 点击结算
-		toDo(){
-			if(this.checkNum <= 0){
-				this.$toast('先选中需要结算的商品');
-			}
-			else{
-				// 结算选中的商品
-				var isList = [];
-				for(var i in this.list){
-					if(this.list[i].checked){
-						isList.push(this.list[i]);
-					}
-				}				
-				console.log(isList);
-			}
-		},
-		// (单选)选择商品
-		selectGoods(item){
-			console.log(item)
-			// this.checked=!this.checked;
-			//判断是否未定义，如果没点击过按钮是没有注册的，则需要先注册checked属性
-			if(typeof item.checked =='undefined'){
-				this.$set(item,"checked",true);
-				this.checkNum ++;  //结算需要显示的数量
-			}else{
-				//  如果已经注册，则设置checked否(这里不能设置为false,因为当已经注册过之后再点击为flase，那么再点击一次则为true)
-				item.checked = !item.checked;
-				console.log(checked)
-				item.checked ? this.checkNum ++ : this.checkNum --;
-			}
-			// 求总价
-			this.totalPrice();
-			// 当所有的商品都选择的时候，自动默认为全选
-			this.list.length == this.checkNum ? this.checkAll(true) : this.checkAllFlag = false;
-		},
-  // 全选与取消全选，点击全选时flag为true,取消时为false
-		checkAll(flag){
-			this.checkAllFlag = flag;
-			var _this = this;
-			flag ? this.checkNum = this.list.length : this.checkNum = 0;
-			this.list.forEach(function(item,index){
-				if(typeof item.checked == 'undefined'){//也要防止未定义
-					_this.$set(item,"checked",_this.checkAllFlag);//通过set来给item添加属性checked
-				}else{
-					item.checked = _this.checkAllFlag;
-				}
-			});
-			this.totalPrice();
-		},
-		// 求总价
-		totalPrice(){
-			
-			let totalMoney = 0;
-			this.list.forEach((item,index)=>{
-				if(item.checked){
-					console.log(`price: ${item.price} sales_num: ${item.sales_num}`)
-					totalMoney += item.price*item.sales_num;
-					this.totalMoney = totalMoney;
-					console.log(`totalMoney:${totalMoney}`)
-				}
-			});
-		},
-		// 删除商品
-		delGoods(id,index){
-			MessageBox.confirm('',{
-				title:'',
-				message:'确定删除该商品吗？',
-				confirmButtonText:'确定',
-				cancelButtonText:'取消'
-			}).then(action => {
-				if (action == 'confirm') {
-					// 刷新类表
-					this.getList();
-					// 取消全选
-					this.checkAll(false);
-				}
-			}).catch(error =>{});
-		},
-		// 数量减方法
-		sub(num,index){
-			if(parseInt(num) <= 1){
-				this.list[index].sales_num = 1;
-			}
-			else{
-				this.list[index].sales_num = parseInt(this.list[index].sales_num) - 1;
-			}
-			this.totalPrice();
-		},
-		// 数量加方法
-		plus(num,index){
-			this.list[index].sales_num = parseInt(this.list[index].sales_num) + 1;
-			this.totalPrice();
-		},
-		// 获取购物车列表
-		getList(){
-			// var _this = this;
-			// this.$axios.get("/static/data/a.json").then(function(res){
-            //      console.log(res)
-			// 	_this.list = res.data.list;
-			// });
-
-		// 	this.list.push({
-		//  	"classify_id": 1,
-		//  	"goods_img": "//gd4.alicdn.com/imgextra/i2/726671139/O1CN01UsYSFL1KHhdcGkTfo_!!726671139.jpg_400x400.jpg",
-		//  	"goods_name": "连衣裙ins夏chic2019新款很仙的法国小众吊带网纱超仙a字裙两件套",
-		//  	"goods_id": 61,
-		//  	"shop_name": "恋上公主",
-		//  	"sales_num": 1,
-		//  	"price": "105.00"
-		//  })
-			this.list = [
+        list: [
 		{
 			"classify_id": 1,
 			"goods_img": "//gd4.alicdn.com/imgextra/i2/726671139/O1CN01UsYSFL1KHhdcGkTfo_!!726671139.jpg_400x400.jpg",
@@ -227,8 +107,145 @@ methods:{
 			"shop_name": "恋上公主",
 			"sales_num": 3,
 			"price": "69.00"
-        }  ];      
-	},	
+        }  ] ,
+        selectId:[],  //选中的商品id
+    	totalMoney: 0,  //总价
+    	checkNum: 0,  //选择的商品数量(结算需要显示的数量)
+		checkAllFlag:false,  //是否全选
+		checked:true,
+		allActive: true
+      }
+	},
+computed:{
+
+	},
+methods:{
+
+		// 点击结算
+		toDo(){
+			if(this.checkNum <= 0){
+				this.$toast('先选中需要结算的商品');
+			}
+			else{
+				// 结算选中的商品
+				var isList = [];
+				for(var i in this.list){
+					if(this.list[i].checked){
+						isList.push(this.list[i]);
+					}
+				}				
+				console.log(isList);
+				this.$router.push('/pay')
+			}
+		},
+		// (单选)选择商品
+		selectGoods(item){
+			console.log(item)
+			// this.checked=!this.checked;
+			//判断是否未定义，如果没点击过按钮是没有注册的，则需要先注册checked属性
+			if(typeof item.checked =='undefined'){
+				console.log("+++++++++++++++++++++++++++++++++++")
+				this.$set(item,"checked",true);
+				this.checkNum ++;  //结算需要显示的数量
+			}else{
+				//  如果已经注册，则设置checked否(这里不能设置为false,因为当已经注册过之后再点击为flase，那么再点击一次则为true)
+				item.checked = !item.checked;
+				console.log("-------------------------------------")
+				item.checked ? this.checkNum ++ : this.checkNum --;
+			}
+			// 求总价
+			this.totalPrice();
+			// 当所有的商品都选择的时候，自动默认为全选
+			if (this.checkNum === this.list.length){
+				this.allActive = true;
+			}else{
+				this.allActive = false;
+			}
+			// this.list.length == this.checkNum ? this.checkAll(true) : this.checkAllFlag = false;
+		},
+  // 全选与取消全选，点击全选时flag为true,取消时为false
+		checkAll(flag){
+			this.allActive = !this.allActive;
+			this.checkAllFlag = flag;
+			var _this = this;
+			flag ? this.checkNum = this.list.length : this.checkNum = 0;
+			this.list.forEach(function(item,index){
+				if(typeof item.checked == 'undefined'){//也要防止未定义
+					_this.$set(item,"checked",_this.checkAllFlag);//通过set来给item添加属性checked
+				}else{
+					item.checked = _this.checkAllFlag;
+				}
+			});
+			this.totalPrice();
+		},
+		// 求总价
+		totalPrice(){
+			
+			let totalMoney = 0;
+			this.list.forEach((item,index)=>{
+				if(item.checked){
+					console.log(`price: ${item.price} sales_num: ${item.sales_num}`)
+					totalMoney += item.price*item.sales_num;
+					this.totalMoney = totalMoney.toFixed(2);
+					console.log(`totalMoney:${totalMoney}`)
+				}
+			});
+		},
+		// 删除商品
+		delGoods(id,index){
+			MessageBox.confirm('',{
+				title:'',
+				message:'确定删除该商品吗？',
+				confirmButtonText:'确定',
+				cancelButtonText:'取消'
+			}).then(action => {
+				if (action == 'confirm'){
+					//删除元素
+					console.log(this.list.length)
+					this.list.splice(index,1);
+					console.log(this.list.length)
+					// 刷新类表
+					this.getList();
+					this.totalPrice();
+					// 取消全选
+					// this.checkAll(false);
+				}
+			}).catch(error =>{});
+		},
+		// 数量减方法
+		sub(num,index){
+			if(parseInt(num) <= 1){
+				this.list[index].sales_num = 1;
+			}
+			else{
+				this.list[index].sales_num = parseInt(this.list[index].sales_num) - 1;
+			}
+			this.totalPrice();
+		},
+		// 数量加方法
+		plus(num,index){
+			this.list[index].sales_num = parseInt(this.list[index].sales_num) + 1;
+			this.totalPrice();
+		},
+		// 获取购物车列表
+		getList(){
+			// var _this = this;
+			// this.$axios.get("/static/data/a.json").then(function(res){
+            //      console.log(res)
+			// 	_this.list = res.data.list;
+			// });
+
+		// 	this.list.push({
+		//  	"classify_id": 1,
+		//  	"goods_img": "//gd4.alicdn.com/imgextra/i2/726671139/O1CN01UsYSFL1KHhdcGkTfo_!!726671139.jpg_400x400.jpg",
+		//  	"goods_name": "连衣裙ins夏chic2019新款很仙的法国小众吊带网纱超仙a字裙两件套",
+		//  	"goods_id": 61,
+		//  	"shop_name": "恋上公主",
+		//  	"sales_num": 1,
+		//  	"price": "105.00"
+		//  })
+		}
+				
 },
 created(){
 		console.log("********************************8")
@@ -236,7 +253,7 @@ created(){
 	},
     mounted(){
 		console.log("********************************8")
-		this.getList();
+		// this.getList();
 	    this.totalPrice();
 	},
 	
@@ -249,11 +266,11 @@ created(){
 	  padding: 0;
 	 
   }
-   .input_check{
+  .input_check{
     position: relative;
     margin: 0;
-    width: 8px;
-    height: 8px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     border: 2px solid #ccc;
     cursor: pointer;
@@ -302,9 +319,6 @@ created(){
 	ul>li>.car_list_top>.car_list_t_l>.input_check{
 		position: relative;
 		margin-right: 10px;
-		width: 40px;
-		height: 40px;
-
 	}
 	ul>li>.car_list_top>.car_list_t_l>.input_check>span{
 		display: block;
@@ -383,7 +397,7 @@ created(){
 		left: 0;
 		bottom: 0;
 		background-color: #fff;
-		height: 80px;
+		height: 65px;
 		font-size: 14px;
 		display: flex;
 		justify-content: space-around;
@@ -394,18 +408,26 @@ created(){
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
+		position: relative;
+		width: 18px;
+		height: 18px;
+		border-radius: 50%;
+		border: 2px solid #ccc;
+		cursor: pointer;
 	}
+ .selector-allActive {
+    background-color: #ff8198;
+    border-color: #ff8198;
+  }
+
+
 	.shop_car_body>.car_footer>.car_footer_l>p{
 		margin-left: 20px;
 	}
 	.shop_car_body>.car_footer>.car_footer_l>span{
 		display: block;
-		width: 36px;
-		height: 36px;
-		background-size: 36px 36px;
 	}
 	.shop_car_body>.car_footer>.car_footer_r{
-		
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
