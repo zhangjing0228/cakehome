@@ -30,9 +30,63 @@
                 </div>
             </div>
         </div>
+        <div class="send">
+            <ul >
+                <li class="send_ps">
+                    <p>配送</p>
+                    <div class="send_ps_time">
+                    <p>快递运输 </p> 
+                    <p>预计11月20日24:00前送达</p>
+                    </div>
+                </li>
+                <li class="send_ps">
+                    <p>退换无忧</p>
+                    <div class="send_ps_time">
+                    <p>商家赠送 </p> 
+                    <p>享运费补贴或免费取件服务</p>
+                    </div>
+                </li>
+                <li class="send_ps">
+                    <p>留言</p>
+                    <div class="send_ps_time">
+                    <input  type="text" placeholder="建议留言前先与商家沟通确认" name="" id="">
+                    </div>
+                </li>
+             </ul>  
+             <ul>  
+                 <li class="send_ps">
+                    <p>商品金额</p>
+                    <div class="send_ps_money">
+                    <p>￥459.00</p>
+                    </div>
+                </li>
+                <li class="send_ps">
+                    <p>退换无忧</p>
+                    <div class="send_ps_money">
+                    <p>￥0.00</p>
+                    </div>
+                </li>
+                <li class="send_ps">
+                    <p>运费</p>
+                    <div class="send_ps_money">
+                    <p>￥0.00</p>
+                    </div>
+                </li>
+                <li class="send_ps">
+                    <p>优惠券</p>
+                    <div class="send_ps_money">
+                    <p style="color:red">-￥10.00</p>
+                    </div>
+                </li>
+             </ul>
+           
+        </div>
+        <mt-tabbar>
+           <p>￥429.00</p>
+           <button @click="toDo()">提交订单</button>
+         </mt-tabbar>
     </div>
 </template>
-
 
 <style scoped>
       body{
@@ -112,6 +166,51 @@
         text-align: center;
         border: none;
     }
+    .send{
+        margin-top: 290px;
+        position: fixed;
+        font-size: 14px;
+        font-weight: border;
+    }
+    .send .send_ps{
+        display: flex;
+        margin-bottom: 20px;
+    }
+    .send .send_ps>input{
+       font-size: 10px;
+       text-align: center;
+       border:0px solid #fff;
+    }
+    .send .send_ps>p:first-child{
+        width: 80px;
+        padding-left: 8px
+    }
+    .send .send_ps>.send_ps_time{
+       margin-left:110px;
+       text-align: right;
+    }
+    .send .send_ps>.send_ps_money{
+        text-align: right;
+        margin-left: 220px;
+    }
+   .mint-tabbar{
+       justify-content: space-between;
+   }
+   .mint-tabbar>p{
+      line-height: 40px;
+      font-weight: 900;
+      color: red;
+   }
+   .mint-tabbar>button{
+       display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #fff;
+		height: 35px;
+		padding: 0px 20px;
+		border-radius: 30px;
+        background: rgb(247, 44, 17);
+   }
 </style>
 
 <script>
@@ -147,7 +246,24 @@ export default {
                 this.list[index].sales_num=parseInt(this.list[index].sales_num) - 1;
                // this.totalPrice();
             }
-        }
+        },
+        // 点击结算
+		toDo(){
+			if(this.checkNum <= 0){
+				this.$toast('先选中需要结算的商品');
+			}
+			else{
+				// 结算选中的商品
+				var isList = [];
+				for(var i in this.list){
+					if(this.list[i].checked){
+						isList.push(this.list[i]);
+					}
+				}				
+				console.log(isList);
+				this.$router.push('/pay')
+			}
+		},
     }
 
 }

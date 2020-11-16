@@ -135,7 +135,7 @@ methods:{
 					}
 				}				
 				console.log(isList);
-				this.$router.push('/pay')
+				this.$router.push('/dingdan')
 			}
 		},
 		// (单选)选择商品
@@ -415,6 +415,7 @@ created(){
 		border: 2px solid #ccc;
 		cursor: pointer;
 	}
+	
  .selector-allActive {
     background-color: #ff8198;
     border-color: #ff8198;
@@ -446,7 +447,7 @@ created(){
 		height: 35px;
 		padding: 0px 20px;
 		border-radius: 30px;
-		background: linear-gradient(45deg,#ff6924,#fe8701);
+		background: rgb(247, 44, 17);
 	} 
 	
  </style>

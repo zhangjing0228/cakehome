@@ -5,7 +5,7 @@
         <router-link to="/cart" slot="left">
           <mt-button icon="back"></mt-button>
         </router-link>
-        <router-link to="/pay" slot="right">
+        <router-link to="/dingdan" slot="right">
           <mt-button style="font-size:16px">订单中心</mt-button>
         </router-link>
         </mt-header>
@@ -196,6 +196,7 @@
 
 <script>
 import Cart from './Cart'
+import Dingdan from './Dingdan.vue'
 export default {
   data(){
     return{
