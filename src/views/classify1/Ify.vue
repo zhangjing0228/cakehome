@@ -12,7 +12,7 @@
    <!-- 右边选择分栏 -->
    <div class="right">
 <!-- 面板区域开始 -->
-<p class="roof">------按口味------</p>
+<p class="roof">————{{classfont[0].classify}}————</p>
 <mt-tab-container v-model="classify">
   <!-- 人气推荐面板 -->
 
@@ -21,8 +21,11 @@
 <router-link to="/page">
     <div class="img1 moodsd">
       <img class="imgsize" src="../../assets/yangjian.img/moods_img/timg1.jpg">
-      <p class="f10 wcenter text">旋转木马【音乐盒】<p>
-      <p class="wcenter red">￥188</p>
+      <p class="f10 wcenter text">旋转木马【音乐盒】</p>
+      <div class="wcenter red price">
+      <span >￥188</span>
+      <del>￥218</del>
+      </div>
     </div>
 </router-link>
 
@@ -49,11 +52,59 @@
 
 
 
-
+  
     </div>
   </mt-tab-container-item>
-  <mt-tab-container-item id="3"></mt-tab-container-item>
-  <mt-tab-container-item id="4"></mt-tab-container-item>
+  <mt-tab-container-item id="3">
+    <div id="moods">
+    <div class="kouwei">
+        <div class="ruzhixq">
+          <router-link to="/totalrenqun">
+          <img class="img3" src="../../assets/zjimg/1ruzhi.png">
+          <p class="p">乳脂类</p>
+          <span>乳脂蛋糕采用进口品牌的优质原料，纯手工精制而成。</span>
+          </router-link>
+        </div>
+        <hr>
+        <div>
+          <img class="img3" src="../../assets/zjimg/2musi.png">
+          <p class="p">慕斯类</p>
+          <span>慕斯蛋糕口感和风味的各种辅料，冷冻后食用其味无穷，成为蛋糕中的极品</span>
+        </div>
+        <hr>
+        <div>
+          <img class="img3" src="../../assets/zjimg/3shuiguo.png">
+          <p class="p">水果类</p>
+          <span>浓浓的奶香味与清新甜蜜的水果相搭配出来的浓郁甜美气息，蕴藏着甜蜜浪漫的温馨情怀，奶油的浓郁奶相结合水果的酸甜，恰到好处的口味与口感的结合，让您的感官与知觉完全得到满足。</span>
+          <hr>
+        </div>
+    </div>
+    </div>
+  </mt-tab-container-item>
+  <mt-tab-container-item id="4">
+    <div class="renqun">
+      <div>
+       <router-link to="/totalrenqun">
+          <img src="../../assets/zjimg/test2.png">
+       </router-link> 
+      </div>
+      <div>
+        <router-link to="/totalrenqun">
+          <img src="../../assets/zjimg/test22.png">
+       </router-link>
+      </div>
+      <div>
+        <router-link to="/totalrenqun">
+          <img src="../../assets/zjimg/test23.png">
+        </router-link>
+      </div>
+      <div>
+        <router-link to="/totalrenqun">
+          <img src="../../assets/zjimg/test24.png">
+       </router-link>
+      </div>
+    </div>
+  </mt-tab-container-item>
 </mt-tab-container>
    </div>
   </div>
@@ -146,7 +197,14 @@ div {
 .img1 {
   margin-bottom: 25px;
 }
-
+.price {
+  margin-top: 5px;
+}
+.price :last-child {
+  color: rgb(102, 102, 102);
+  font-size: 13px;
+  margin-left: 5px;
+}
 /* 按品牌 样式 */
 .brand {
   display: flex;
@@ -165,14 +223,100 @@ div {
 .brand1 p {
   color: rgb(102, 102, 102);
 }
+/* ============================== */
+body {
+  margin: 0;
+}
+.ruzhixq a {
+  color: black;
+  text-decoration: none;
+}
+.renqun {
+  margin-top: 30px;
+}
+.renqun > div {
+  text-align: center;
+  margin-bottom: 5px;
+}
+#moods {
+  margin-right: 5px;
+}
+.kouwei p {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.kouwei span {
+  font-size: 15px;
+  color: gray;
+}
+/* .kouwei {
+  display: flex;
+} */
+.kouwei:nth-child(2) {
+  color: black;
+  font-size: 20px;
+  text-align: center;
+}
+.img3 {
+  width: 150px;
+  margin-left: 5px;
+}
+.sort {
+  display: flex;
+}
+
+.left {
+  width: 90px;
+  border-top: 1px solid slategray;
+}
+.mint-navbar {
+  display: block;
+}
+.mint-navbar .mint-tab-item.is-selected {
+  border-bottom: 0px;
+  border-left: 2px red solid;
+  color: slategrey;
+}
+.mint-tab-item.is-selected {
+  padding: 0px;
+}
+.mint-tab-item-label {
+  margin-bottom: 50px;
+  margin-top: 15px;
+  font-size: 15px;
+  margin-left: 0;
+}
+
+.right {
+  width: 100%;
+  border: 1px solid slategray;
+  border-right: 0;
+  border-bottom: 0;
+}
+.roof {
+  text-align: center;
+  font-size: 13px;
+  color: #808080;
+}
+.kouwei > div {
+  text-align: center;
+}
 </style>
 
 <script>
 export default {
   data() {
     return {
-      classify: "1"
+      classify: "1",
+      classfont: []
     };
+  },
+  mounted() {
+    this.axios.get("/ify").then(res => {
+      this.classfont = res.data;
+    });
   }
 };
 </script>

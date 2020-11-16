@@ -27,6 +27,7 @@
 </div>
 <div class="price">
 <span >￥188</span>
+<del>￥266</del>
 </div>
 <div class="air"></div>
 <div class="spec">
@@ -136,6 +137,11 @@ div {
   margin: 10px 10px 10px 10px;
   font-weight: 600;
   color: rgb(244, 66, 54);
+}
+.price :last-child {
+  margin-left: 15px;
+  font-size: 18px;
+  color: rgb(187, 187, 187);
 }
 .air {
   height: 12px;
