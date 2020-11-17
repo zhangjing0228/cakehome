@@ -7,6 +7,14 @@ import Pay from '../views/shopcart/Pay.vue'
 import ProductDetail from '../views/shopcart/ProductDetail.vue'
 import Dingdan from '../views/shopcart/Dingdan.vue'
 
+
+
+const Homepage = () => import('../views/homepage/Homepage');
+const Category = () => import('../views/category/Category')
+const Cartpage = () => import('../views/cartpage/Cartpage')
+const Profile = () => import('../views/profile/Profile')
+const Detail = () => import('../views/detail/Detail')
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -61,10 +69,36 @@ const routes = [
     name: 'Ify',
     component: () => import('../views/classify1/Ify.vue')
   },
+
   {
     path: '/page',
     name: 'Page',
     component: () => import('../views/classify1/Page.vue')
+  },
+  {
+    path: '/',
+    redirect: '/homepage'
+  },
+  {
+    path: '/homepage',
+    component: Homepage
+  },
+  {
+    path: '/category',
+    component: Category
+  },
+  {
+    path: '/cartpage',
+    component: Cartpage
+  },
+  {
+    path: '/profile',
+    component: Profile
+  },
+  
+  {
+    path: '/detail',
+    component: Detail
   }
 ];
 
