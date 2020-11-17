@@ -205,10 +205,10 @@ export default {
   },
   methods:{
     active(index){
-      if(this.checked==false){
+      if(this.checked){
           this.checked=!this.checked
       }else{
-        this.checked=!this.checked;
+        this.checked=true;
       }
     }
   },

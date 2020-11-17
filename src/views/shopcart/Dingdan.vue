@@ -72,17 +72,12 @@
                     <p>￥0.00</p>
                     </div>
                 </li>
-                <li class="send_ps">
-                    <p>优惠券</p>
-                    <div class="send_ps_money">
-                    <p style="color:red">-￥10.00</p>
-                    </div>
-                </li>
+               
              </ul>
            
         </div>
         <mt-tabbar>
-           <p>￥429.00</p>
+           <p>￥{{totalMoney}}</p>
            <button @click="toDo()">提交订单</button>
          </mt-tabbar>
     </div>
@@ -214,20 +209,25 @@
 </style>
 
 <script>
+import Cart  from './Cart.vue';
 export default {
     data(){
         return{
             sales_num:1,
+            totalMoney:0,
             list:[
-                {
-               "classify_id": 1,
-			   "goods_img": "//gd4.alicdn.com/imgextra/i2/726671139/O1CN01UsYSFL1KHhdcGkTfo_!!726671139.jpg_400x400.jpg",
-			   "goods_name": "连衣裙ins夏chic2019新款很仙的法国小众吊带网纱超仙a字裙两件套",
-			   "goods_id": 61,
-			   "shop_name": "恋上公主",
-		       "sales_num": 1,
-		   	   "price": "105.00"
-            }
+               
+            {
+                classify_id: 4,
+                goods_img:
+                    "//gd4.alicdn.com/imgextra/i4/726671139/O1CN01nonA501KHhctJZ7Tk_!!726671139.jpg_400x400.jpg",
+                goods_name:
+                    "新款衬衫女时尚洋气超仙设计感小众2019长袖收腰雪纺韩版chic衬衣",
+                goods_id: 64,
+                shop_name: "恋上公主",
+                sales_num: 3,
+                price: "69.00",
+        },
             ],
             
         }
@@ -236,7 +236,7 @@ export default {
         add(num,index){
             this.list[index].sales_num = parseInt(this.list[index].sales_num) +1;
             
-			// this.totalPrice();
+			 this.totalPrice();
 
         },
         jian(num,index){
@@ -244,7 +244,7 @@ export default {
                 this.list[index].sales_num=1
             }else{
                 this.list[index].sales_num=parseInt(this.list[index].sales_num) - 1;
-               // this.totalPrice();
+                this.totalPrice();
             }
         },
         // 点击结算
@@ -263,8 +263,19 @@ export default {
 				console.log(isList);
 				this.$router.push('/pay')
 			}
-		},
+        },
+        //总价
+        totalPrice() {
+            let totalMoney = 0;
+            this.list.forEach((item, index) => {
+            
+                totalMoney += item.price * item.sales_num;
+                this.totalMoney = totalMoney.toFixed(2);
+                console.log(`totalMoney:${totalMoney}`);
+               
+           });
+           
+            }
     }
-
 }
 </script>
