@@ -77,8 +77,18 @@
         <div><img src="../../assets/mage/rqtj3.png" alt=""></div>
       </div>
     </div>
-    <!-- 底部 -->
-    <div>
+    <!-- 热卖精选 -->
+    <div class="rmjx">
+      <div>-热卖精选-</div>
+      <div v-for="(item,index) of cate" :key="index">
+        <div><img :src="item.img_a" alt=""/></div>
+        <div>{{item.title}}</div>
+        <div>{{item.details}}</div>
+        <div><span>￥{{item.discount_prices}}</span> <del>￥{{item.price}}</del> </div>
+      </div>
+    </div>
+    <!-- 底部 -->   
+    <div id="mbutton">
         <mt-tabbar v-model="selectedTab" fixed>
         <mt-tab-item id="sy">
           首页
@@ -95,7 +105,7 @@
             v-else
           />
         </mt-tab-item>
-        <mt-tab-item id="fl">
+        <mt-tab-item id="fl" href="/ify">
           分类
           <img
             src="../../assets/mage/fl1.png"
@@ -105,7 +115,7 @@
           />
           <img src="../../assets/mage/fl.png" alt="" slot="icon" v-else />
         </mt-tab-item>
-        <mt-tab-item id="xh">
+        <mt-tab-item id="xh" href="/flower">
           鲜花
           <img
             src="../../assets/mage/xh1.png"
@@ -115,7 +125,7 @@
           />
           <img src="../../assets/mage/xh.png" alt="" slot="icon" v-else />
         </mt-tab-item>
-        <mt-tab-item id="gwc">
+        <mt-tab-item id="gwc" href="/cart">
           购物车
           <img
             src="../../assets/mage/gwc1.png"
@@ -136,7 +146,7 @@
           <img src="../../assets/mage/wd.png" alt="" slot="icon" v-else />
         </mt-tab-item>
       </mt-tabbar>
-    </div>
+    </div> 
   </div>
 </template>
 
@@ -250,16 +260,51 @@
   height: 184px;
   width: 170px;
   margin-right: 1px;
-  margin-bottom: 80px;
 }
 .rqtj>div>div:not(:first-child)>img{
   height: 91px;
   width: 197px;
   margin-bottom: -1px;
 }
- #index .mint-tabbar>.mint-tab-item.is-selected{
-    color: #ffc0cb;
-  }
+.rmjx>div:first-child{
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+.rmjx>div:not(:first-child)>div>img{
+  width: 180px;
+}
+.rmjx>div:not(:first-child){
+  width: 180px;
+  float: left;
+  margin-left: 5px;
+}
+.rmjx>div:not(:first-child)>div{
+  width: 180px;
+  float: left;
+  text-align: center;
+  margin-top: 5px;
+  color: #b3b3b3;
+}
+.rmjx>div:not(:first-child)>:last-child{
+  margin-top: 10px;
+}
+.rmjx>div:not(:first-child)>div:nth-child(2){
+  color: #000000a3;
+  font-weight: 600;
+}
+.rmjx>div:not(:first-child)>div:last-child>span{
+  color:#ec6868;
+  font-size: 19px;
+}
+.rmjx>div:last-child>div:last-child{
+  margin-bottom: 80px;
+}
+#index .mint-tabbar>.mint-tab-item.is-selected{
+  color: #ffc0cb;
+}
 #index .mint-tab-item{
   color:#B3B3B3;
 }
@@ -270,12 +315,17 @@ export default {
   data(){
     return{
       selectedTab:'',
-      indexSwiper:''
+      indexSwiper:'',
+      cate:[]
     }
   },
   mounted(){
     this.axios.get('/flower').then((res)=>{
       this.indexSwiper = res.data.results;
+    })
+    this.axios.get('/index').then(res=>{
+      this.cate=res.data;     
+      console.log(this.cate)
     })
   }
 };
