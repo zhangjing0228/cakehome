@@ -105,7 +105,7 @@
             v-else
           />
         </mt-tab-item>
-        <mt-tab-item id="fl" href="/ify">
+        <mt-tab-item id="fl" href="/page">
           分类
           <img
             src="../../assets/mage/fl1.png"
