@@ -4,7 +4,7 @@
   <div class="cart">
     <div class="page">
       <mt-header title="我的购物车">
-        <router-link to="/" slot="left">
+        <router-link to="/home" slot="left">
           <mt-button icon="back"></mt-button>
         </router-link>
       </mt-header>

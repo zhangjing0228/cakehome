@@ -3,8 +3,8 @@
     <keep-alive exclude="Detail">
       <router-view></router-view>
     </keep-alive>
-    <main-tab-bar></main-tab-bar>
-    <icon></icon>
+    <!-- <main-tab-bar></main-tab-bar>-->
+    <icon></icon> 
     <svg-icon></svg-icon>
   </div>
 </template>
@@ -12,7 +12,7 @@
 <style>
  @import "./assets/css/base.css";
 #app {
-   position: relative;
+  
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
