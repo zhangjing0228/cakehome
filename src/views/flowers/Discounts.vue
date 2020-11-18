@@ -60,8 +60,8 @@ export default {
 
 <style>
 .flowertitle {
-  background: rgba(161, 46, 46, 0.349);
-  color: black;
+  background: #ffc0cb;
+  color: #fff;
 }
 .lq {
   width: 100%;

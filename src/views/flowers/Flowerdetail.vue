@@ -16,23 +16,23 @@
         <span>优惠价:¥{{ n.price.toFixed(2) }}</span
         ><s>原价¥{{ n.price1.toFixed(2) }}</s>
       </p>
+      <mt-tabbar fixed>
+        <mt-tab-item>
+          <div @click="shouc">
+            <img v-if="!sc" src="../../assets/flower/sc1.png" alt="" />
+            <img v-if="sc" src="../../assets/flower/sc2.png" alt="" />
+            <span>收藏</span>
+          </div>
+        </mt-tab-item>
+        <mt-tab-item>
+          <div @click="zixun">
+            <img src="../../assets/flower/zixun.png" alt="" />
+            咨询
+          </div>
+        </mt-tab-item>
+        <mt-tab-item class="dg"><p @click="ljdg">立即订购</p></mt-tab-item>
+      </mt-tabbar>
     </div>
-    <mt-tabbar fixed>
-      <mt-tab-item>
-        <div @click="shouc">
-          <img v-if="!sc" src="../../assets/flower/sc1.png" alt="" />
-          <img v-if="sc" src="../../assets/flower/sc2.png" alt="" />
-          <span>收藏</span>
-        </div>
-      </mt-tab-item>
-      <mt-tab-item>
-        <div @click="zixun">
-          <img src="../../assets/flower/zixun.png" alt="" />
-          咨询
-        </div>
-      </mt-tab-item>
-      <mt-tab-item class="dg"><p @click="ljdg">立即订购</p></mt-tab-item>
-    </mt-tabbar>
 
     <!-- 详情结束 -->
   </div>
@@ -81,10 +81,9 @@ export default {
 .detail {
   position: absolute;
   background: #eee;
-  height: 100%;
+  height: 90%;
   width: 100%;
   font-size: 18px;
-  top: 0;
 }
 .detail img {
   width: 100%;

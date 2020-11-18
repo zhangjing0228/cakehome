@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="flower">
     <!-- 顶部导航开始 -->
     <mt-header class="flowertitle" title="最美鲜花预定"> </mt-header>
     <!-- 顶部导航结束 -->
@@ -39,7 +39,9 @@
     <ul class="selling-list">
       <li class="selling-listitem" v-for="(n, i) of flower" :key="i">
         <router-link :to="`/flowerdetail/${n.fid}`">
-          <img :src="n.img" alt="" />
+          <div>
+            <img :src="n.img" alt="" />
+          </div>
           <p class="p1">{{ n.title }}</p>
           <p class="p2">
             <span>¥{{ n.price }}</span
@@ -49,6 +51,7 @@
       </li>
     </ul>
     <!-- 人气热卖结束 -->
+    
   </div>
 </template>
 
@@ -79,6 +82,10 @@ export default {
 </script>
 
 <style>
+#flower .mint-header{
+  background-color:#ffc0cb;
+  color: #fff; 
+}
 .flowertitle {
   background: rgba(161, 46, 46, 0.349);
   color: black;
@@ -96,7 +103,7 @@ export default {
   margin: 15px 0;
 }
 .lqbtn > span {
-  background: rgba(161, 46, 46, 0.349);
+  background: #ffc0cb;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
@@ -153,15 +160,18 @@ export default {
 }
 .selling-listitem {
   width: 49%;
-  height: 60%;
+  height: 16rem;
   text-align: center;
   background: #eee;
   padding-bottom: 15px;
   margin-bottom: 5px;
 }
+.selling-listitem div {
+  height: 75%;
+}
 .selling-listitem img {
   width: 100%;
-  height: 60%;
+  height: 100%;
 }
 .p1 {
   font-size: 20px;
