@@ -1,8 +1,8 @@
 <template>
-  <div class="sort" id="ify">
+  <div class="sort">
     <!-- 左边导航栏 -->
     <div class="left">
-   <mt-navbar class="navbar" v-model="classify">
+   <mt-navbar class="navbar" v-model="classabc">
     <mt-tab-item id="1">人气推荐</mt-tab-item>
     <mt-tab-item id="2">按品牌</mt-tab-item>
     <mt-tab-item id="3">按口味</mt-tab-item>
@@ -12,19 +12,19 @@
    <!-- 右边选择分栏 -->
    <div class="right">
 <!-- 面板区域开始 -->
-<p class="roof">————{}————</p>
-<mt-tab-container v-model="classify">
+<mt-tab-container v-model="classabc">
   <!-- 人气推荐面板 -->
 
   <mt-tab-container-item id="1" >
+    <p class="roof">————人气推荐———</p>
     <div id="moods">
-<router-link to="/page">
+<router-link to="/page" v-for="(t,i) of classfont" :key="i">
     <div class="img1 moodsd">
-      <img class="imgsize" src="../../assets/yangjian.img/moods_img/timg1.jpg">
-      <p class="f10 wcenter text">旋转木马【音乐盒】</p>
+      <img class="imgsize" :src="t.img_a">
+      <p class="f10 wcenter text">{{t.title}}</p>
       <div class="wcenter red price">
-      <span >￥188</span>
-      <del>￥218</del>
+      <span >￥{{t.discount_prices}}</span>
+      <del>￥{{t.price}}</del>
       </div>
     </div>
 </router-link>
@@ -38,12 +38,13 @@
   </mt-tab-container-item>
   <!-- 按品牌面板 -->
   <mt-tab-container-item id="2">
+    <p class="roof">————按品牌———</p>
     <div class="brand">
 
-<router-link to='/'>
-<div class="brand1">
-<img src="../../assets/yangjian.img/brand_img/timg.jpg">
-<p class="wcenter f10">元祖食品</p>
+<router-link to='/' v-for="(t,i) of classwill" :key="i">
+<div class="brand1" >
+<img :src="t.brand_img">
+<p class="wcenter f10">{{t.brand}}</p>
 </div>
 </router-link>
 
@@ -56,6 +57,7 @@
     </div>
   </mt-tab-container-item>
   <mt-tab-container-item id="3">
+    <p class="roof">————按口味———</p>
     <div id="moods">
     <div class="kouwei">
         <div class="ruzhixq">
@@ -82,6 +84,7 @@
     </div>
   </mt-tab-container-item>
   <mt-tab-container-item id="4">
+  <p class="roof">————按人群———</p>
     <div class="renqun">
       <div>
        <router-link to="/totalrenqun">
@@ -107,65 +110,6 @@
   </mt-tab-container-item>
 </mt-tab-container>
    </div>
-    <div>
-        <mt-tabbar v-model="selectedTab" fixed>
-        <mt-tab-item id="sy" href="/home">
-          首页
-          <img
-            src="../../assets/mage/sy1.png"
-            alt=""
-            slot="icon"
-            v-if="selectedTab == 'sy'"
-          />
-          <img
-            src="../../assets/mage/sy.png"
-            alt=""
-            slot="icon"
-            v-else
-          />
-        </mt-tab-item>
-        <mt-tab-item id="fl" href="/ify">
-          分类
-          <img
-            src="../../assets/mage/fl1.png"
-            alt=""
-            slot="icon"
-            v-if="selectedTab == 'fl'"
-          />
-          <img src="../../assets/mage/fl.png" alt="" slot="icon" v-else />
-        </mt-tab-item>
-        <mt-tab-item id="xh" href="/flower">
-          鲜花
-          <img
-            src="../../assets/mage/xh1.png"
-            alt=""
-            slot="icon"
-            v-if="selectedTab == 'xh'"
-          />
-          <img src="../../assets/mage/xh.png" alt="" slot="icon" v-else />
-        </mt-tab-item>
-        <mt-tab-item id="gwc" href="/cart">
-          购物车
-          <img
-            src="../../assets/mage/gwc1.png"
-            alt=""
-            slot="icon"
-            v-if="selectedTab == 'gwc'"
-          />
-          <img src="../../assets/mage/gwc.png" alt="" slot="icon" v-else />
-        </mt-tab-item>
-        <mt-tab-item id="wd">
-          我的
-          <img
-            src="../../assets/mage/wd1.png"
-            alt=""
-            slot="icon"
-            v-if="selectedTab == 'wd'"
-          />
-          <img src="../../assets/mage/wd.png" alt="" slot="icon" v-else />
-        </mt-tab-item>
-      </mt-tabbar>
-    </div> 
   </div>
 </template>
 
@@ -362,22 +306,26 @@ body {
 .kouwei > div {
   text-align: center;
 }
-#ify .mint-tabbar>.mint-tab-item.is-selected{
-  color: #ffc0cb;
-}
-#ify .mint-tab-item{
-  color:#B3B3B3;
-}
 </style>
 
 <script>
 export default {
   data() {
     return {
-      selectedTab:'fl',
-      classify: "1",
-      classfont: []
+      classabc: "1",
+      classfont: [],
+      classwill: []
     };
+  },
+  mounted() {
+    this.axios.get("/datalis").then(res => {
+      this.classfont = res.data.result;
+      console.log(res.data);
+    }),
+      this.axios.get("/will").then(res => {
+        this.classwill = res.data.result;
+        // console.log(res.data.result);
+      });
   }
 };
 </script>
