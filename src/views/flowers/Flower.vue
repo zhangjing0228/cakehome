@@ -52,6 +52,65 @@
     </ul>
     <!-- 人气热卖结束 -->
     
+    <div>
+        <mt-tabbar v-model="selectedTab" fixed>
+        <mt-tab-item id="sy" href="/home">
+          首页
+          <img
+            src="../../assets/mage/sy1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'sy'"
+          />
+          <img
+            src="../../assets/mage/sy.png"
+            alt=""
+            slot="icon"
+            v-else
+          />
+        </mt-tab-item>
+        <mt-tab-item id="fl" href="/ify">
+          分类
+          <img
+            src="../../assets/mage/fl1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'fl'"
+          />
+          <img src="../../assets/mage/fl.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+        <mt-tab-item id="xh" href="/flower">
+          鲜花
+          <img
+            src="../../assets/mage/xh1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'xh'"
+          />
+          <img src="../../assets/mage/xh.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+        <mt-tab-item id="gwc" href="/cart">
+          购物车
+          <img
+            src="../../assets/mage/gwc1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'gwc'"
+          />
+          <img src="../../assets/mage/gwc.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+        <mt-tab-item id="wd">
+          我的
+          <img
+            src="../../assets/mage/wd1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'wd'"
+          />
+          <img src="../../assets/mage/wd.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+      </mt-tabbar>
+    </div> 
   </div>
 </template>
 
@@ -59,6 +118,7 @@
 export default {
   data() {
     return {
+      selectedTab:'xh',
       flowerbanners: "",
       flowerclass: "",
       flower: "",
@@ -180,5 +240,14 @@ export default {
 .p2 span {
   color: #ff5f1c;
   margin-right: 10px;
+}
+#flower .mint-tabbar>.mint-tab-item.is-selected{
+  color: #ffc0cb;
+}
+#flower .mint-tab-item{
+  color:#B3B3B3;
+}
+#flower .selling-list>li:last-child{
+  margin-bottom: 70px;
 }
 </style>

@@ -88,9 +88,9 @@
       </div>
     </div>
     <!-- 底部 -->   
-    <div id="mbutton">
+    <div>
         <mt-tabbar v-model="selectedTab" fixed>
-        <mt-tab-item id="sy">
+        <mt-tab-item id="sy" href="/home">
           首页
           <img
             src="../../assets/mage/sy1.png"
@@ -105,7 +105,7 @@
             v-else
           />
         </mt-tab-item>
-        <mt-tab-item id="fl" href="/page">
+        <mt-tab-item id="fl" href="/ify">
           分类
           <img
             src="../../assets/mage/fl1.png"
@@ -314,7 +314,7 @@
 export default {
   data(){
     return{
-      selectedTab:'',
+      selectedTab:'sy',
       indexSwiper:'',
       cate:[]
     }

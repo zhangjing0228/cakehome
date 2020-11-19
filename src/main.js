@@ -25,6 +25,7 @@ Vue.prototype.moment=moment;
 Vue.prototype.qs=qs;
 Vue.config.productionTip = false
 
+
 new Vue({
   router,
   store,

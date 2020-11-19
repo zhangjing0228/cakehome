@@ -1,5 +1,5 @@
 <template>
-  <div class="sort">
+  <div class="sort" id="ify">
     <!-- 左边导航栏 -->
     <div class="left">
    <mt-navbar class="navbar" v-model="classify">
@@ -12,7 +12,7 @@
    <!-- 右边选择分栏 -->
    <div class="right">
 <!-- 面板区域开始 -->
-<p class="roof">————{{classfont[0].classify}}————</p>
+<p class="roof">————{}————</p>
 <mt-tab-container v-model="classify">
   <!-- 人气推荐面板 -->
 
@@ -107,6 +107,65 @@
   </mt-tab-container-item>
 </mt-tab-container>
    </div>
+    <div>
+        <mt-tabbar v-model="selectedTab" fixed>
+        <mt-tab-item id="sy" href="/home">
+          首页
+          <img
+            src="../../assets/mage/sy1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'sy'"
+          />
+          <img
+            src="../../assets/mage/sy.png"
+            alt=""
+            slot="icon"
+            v-else
+          />
+        </mt-tab-item>
+        <mt-tab-item id="fl" href="/ify">
+          分类
+          <img
+            src="../../assets/mage/fl1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'fl'"
+          />
+          <img src="../../assets/mage/fl.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+        <mt-tab-item id="xh" href="/flower">
+          鲜花
+          <img
+            src="../../assets/mage/xh1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'xh'"
+          />
+          <img src="../../assets/mage/xh.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+        <mt-tab-item id="gwc" href="/cart">
+          购物车
+          <img
+            src="../../assets/mage/gwc1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'gwc'"
+          />
+          <img src="../../assets/mage/gwc.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+        <mt-tab-item id="wd">
+          我的
+          <img
+            src="../../assets/mage/wd1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'wd'"
+          />
+          <img src="../../assets/mage/wd.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+      </mt-tabbar>
+    </div> 
   </div>
 </template>
 
@@ -303,20 +362,22 @@ body {
 .kouwei > div {
   text-align: center;
 }
+#ify .mint-tabbar>.mint-tab-item.is-selected{
+  color: #ffc0cb;
+}
+#ify .mint-tab-item{
+  color:#B3B3B3;
+}
 </style>
 
 <script>
 export default {
   data() {
     return {
+      selectedTab:'fl',
       classify: "1",
       classfont: []
     };
-  },
-  mounted() {
-    this.axios.get("/ify").then(res => {
-      this.classfont = res.data;
-    });
   }
 };
 </script>
