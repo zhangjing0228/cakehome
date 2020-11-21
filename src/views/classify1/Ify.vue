@@ -1,9 +1,9 @@
 <template>
   <div id="ify">
-    <mt-header class="index-header" title="欢迎来到蛋糕之家"> </mt-header>
+    <mt-header class="index-header" title="欢迎来到蛋糕之家" fixed> </mt-header>
     <div class="sort">
     <!-- 左边导航栏 -->
-    <div class="left">
+    <div class="left" style="position:fixed;margin:41px 0">
    <mt-navbar class="navbar" v-model="classabc">
     <mt-tab-item id="1">人气推荐</mt-tab-item>
     <mt-tab-item id="2">按品牌</mt-tab-item>
@@ -12,7 +12,7 @@
    </mt-navbar>
    </div>
    <!-- 右边选择分栏 -->
-   <div class="right">
+   <div class="right" style="margin:41px 0 0 23%">
 <!-- 面板区域开始 -->
 <mt-tab-container v-model="classabc">
   <!-- 人气推荐面板 -->
@@ -212,24 +212,24 @@ div {
   width: 25%;
   border-top: 1px solid rgb(200, 200, 200);
 }
-.mint-navbar {
+.left .mint-navbar {
   display: block;
 }
-.mint-navbar .mint-tab-item.is-selected {
+.left .mint-navbar .mint-tab-item.is-selected {
   border-bottom: 0px;
   border-left: 2px red solid;
   color: rgb(42, 42, 42);
 }
 .mint-tab-item.is-selected {
-  padding: 0px;
+  padding-top: 7px;
 }
-.mint-tab-item-label {
+.left .mint-tab-item-label {
   margin-bottom: 20px;
   margin-top: 15px;
   font-size: 15px;
   margin-left: 0;
 }
-.mint-tab-item {
+.left .mint-tab-item {
   color: rgb(102, 102, 102);
 }
 
@@ -361,7 +361,7 @@ body {
 .mint-tab-item.is-selected {
   padding: 0px;
 }
-.mint-tab-item-label {
+.left .mint-tab-item-label {
   margin-bottom: 50px;
   margin-top: 15px;
   font-size: 15px;
@@ -388,7 +388,7 @@ body {
 export default {
   data() {
     return {
-      selectedTab:'fl',
+      selectedTab: "fl",
       classabc: "1",
       classfont: [],
       classwill: []

@@ -61,10 +61,11 @@ button {
   import SvgIcon from './components/content/Icon/svg.vue'
 export default {
   name: 'app',
-    components: {
-      MainTabBar,
-      Icon,
-      SvgIcon
-    }
+  components: {
+    MainTabBar,
+    Icon,
+    SvgIcon
+  },
+  
 }
 </script>
