@@ -1,7 +1,9 @@
+
+
 <template>
   <div>
     <!-- 顶部导航栏 -->
-    <mt-header title="旋转木马【音乐盒】" fixed>
+    <mt-header :title=header.title fixed>
       <div slot="left">
         <mt-button icon="back"></mt-button>
       </div>
@@ -9,25 +11,25 @@
 <!-- -------轮播图------ -->
 
     <div class="swipe">
-      <mt-swipe :auto="5000" :show-indicators="false">
-        <mt-swipe-item><img src="../../assets/yangjian.img/swipe/1im.jpg"></mt-swipe-item>
-        <mt-swipe-item><img src="../../assets/yangjian.img/swipe/2in.jpg"></mt-swipe-item>
-        <mt-swipe-item><img src="../../assets/yangjian.img/swipe/3in.jpg"></mt-swipe-item>
+      <mt-swipe :auto="5000" :show-indicators="false" v-for="(t,i) of wipes" :key="i">
+        <mt-swipe-item><img :src="t.img_a"></mt-swipe-item>
+        <mt-swipe-item><img :src="t.img_b"></mt-swipe-item>
+        <mt-swipe-item><img :src="t.img_c"></mt-swipe-item>
       </mt-swipe>
     </div>
 
 <!-- 详情页开始 -->
 <div class="taxon">
-<span>旋转木马【音乐盒】</span>
+<span>{{header.title}}</span>
 <span>专人配送</span>
 <span>门店自提</span>
 </div>
 <div class="taxond">
-<p>美好童年 追逐奔跑成长</p>
+<p>{{header.details}}</p>
 </div>
 <div class="price">
-<span >￥188</span>
-<del>￥266</del>
+<span >￥{{header.discount_prices}}</span>
+<del>￥{{header.price}}</del>
 </div>
 <div class="air"></div>
 <div class="spec">
@@ -59,8 +61,14 @@
 <!-- 图文详情 -->
 <div class="taxond imgs">图文详情</div>
 <div class="imged m">
-<div v-for="(t,i) of imgsss " :key="i">
+<div v-for="(t,i) of wipes " :key="i">
+<img :src="t.details_img_a">
+<img :src="t.details_img_b">
+<img :src="t.details_img_c">
+<div v-for="(t,i) of imgsss" :key="i">
 <img :src="t">
+</div>
+
 
 
 
@@ -109,7 +117,9 @@ div {
   height: 420px;
   margin-top: 40px;
 }
-
+.swipe img {
+  width: 100%;
+}
 /* 详情页样式 */
 .taxon {
   margin: 12px;
@@ -241,16 +251,23 @@ export default {
   data() {
     return {
       imgsss: [
-        require("../../assets/yangjian.img/image-text/1605190807(1).jpg"),
-        require("../../assets/yangjian.img/image-text/1605190807(2).jpg"),
-        require("../../assets/yangjian.img/image-text/1605190807(3).jpg"),
-        require("../../assets/yangjian.img/image-text/1605190807(4).jpg"),
         require("../../assets/yangjian.img/image-text/1605190807(567).jpg"),
         require("../../assets/yangjian.img/image-text/1605190807(11).jpg"),
         require("../../assets/yangjian.img/image-text/1605190807(9).jpg"),
         require("../../assets/yangjian.img/image-text/1605190807(10).jpg")
-      ]
+      ],
+      wipes: "",
+      header: ""
     };
+  },
+  mounted() {
+    let cid = this.$route.query.cid;
+    // console.log(cid);
+    this.axios.get("/page?cid=" + cid).then(res => {
+      // console.log(res.data.result);
+      this.wipes = res.data.result;
+      this.header = res.data.result[0];
+    });
   }
 };
 </script>
