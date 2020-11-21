@@ -20,7 +20,7 @@
       </mt-swipe>
     </div>
     <!-- 优惠券 -->
-    <div class="yhj">
+    <div class="yhj" @click="yhj()">
       <img src="../../assets/mage/yhj.png" alt="">
     </div>
     <!-- 选项栏 -->
@@ -54,16 +54,16 @@
     <div class="pp">
       <p>品牌馆</p>
       <p>Brand Library</p>
-      <div>
+      <div @click="brand1()">
         <div><img src="../../assets/mage/pp1.jpg" alt=""></div>
       </div>
-      <div>
+      <div @click="brand2()">
         <div><img src="../../assets/mage/pp2.jpg" alt=""></div>
       </div>
-      <div>
+      <div @click="brand3()">
         <div><img src="../../assets/mage/pp3.jpg" alt=""></div>
       </div>
-      <div>
+      <div @click="brand4()">
         <div><img src="../../assets/mage/pp4.jpg" alt=""></div>
       </div>
     </div>
@@ -72,9 +72,9 @@
       <p>人气推荐</p>
       <p>Target Recommended</p>
       <div>
-        <div><img src="../../assets/mage/rqtj1.png" alt=""></div>
-        <div><img src="../../assets/mage/rqtj2.png" alt=""></div>
-        <div><img src="../../assets/mage/rqtj3.png" alt=""></div>
+        <div @click="sar()"><img src="../../assets/mage/rqtj1.png" alt=""></div>
+        <div @click="szb()"><img src="../../assets/mage/rqtj2.png" alt=""></div>
+        <div @click="sxpy()"><img src="../../assets/mage/rqtj3.png" alt=""></div>
       </div>
     </div>
     <!-- 热卖精选 -->
@@ -327,6 +327,32 @@ export default {
       this.cate=res.data;     
       console.log(this.cate)
     })
+  },
+  methods:{
+    sar(){
+      this.$router.push('/flower')
+    },
+    szb(){
+      this.$router.push('/flower')
+    },
+    sxpy(){
+      this.$router.push('/flower')
+    },
+    brand1(){
+      this.$router.push('/flower')
+    },
+    brand2(){
+      this.$router.push('/flower')
+    },
+    brand3(){
+      this.$router.push('/flower')
+    },
+    brand4(){
+      this.$router.push('/flower')
+    },
+    yhj(){
+      this.$router.push('/coupon')
+    },
   }
 };
 </script>

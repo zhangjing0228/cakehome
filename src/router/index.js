@@ -6,6 +6,7 @@ import Cart from '../views/shopcart/Cart.vue';
 import Pay from '../views/shopcart/Pay.vue'
 import ProductDetail from '../views/shopcart/ProductDetail.vue'
 import Dingdan from '../views/shopcart/Dingdan.vue'
+import Coupon from '../views/index/Coupon.vue'
 
 
 
@@ -13,6 +14,10 @@ import Dingdan from '../views/shopcart/Dingdan.vue'
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path:'/coupon',
+    component:Coupon
+  },
   {
     path:'/dingdan',
     component:Dingdan
