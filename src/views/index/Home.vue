@@ -58,10 +58,10 @@
         <div><img src="../../assets/mage/pp1.jpg" alt=""></div>
       </div>
       <div @click="brand2()">
-        <div><img src="../../assets/mage/pp2.jpg" alt=""></div>
+        <div><img src="../../assets/mage/pp2.png" alt=""></div>
       </div>
       <div @click="brand3()">
-        <div><img src="../../assets/mage/pp3.jpg" alt=""></div>
+        <div><img src="../../assets/mage/pp3.png" alt=""></div>
       </div>
       <div @click="brand4()">
         <div><img src="../../assets/mage/pp4.jpg" alt=""></div>
@@ -234,10 +234,11 @@
 .pp>div>div{
   float: left;
   margin-top: 20px;
+  margin-left: 8px;
 }
 .pp>div>div>img{
-  width: 93px;
-  height: 93px;
+  width: 174px;
+  height: 79px;
 }
 .rqtj>p:first-child{
   font-size: 30px;
@@ -259,7 +260,7 @@
 .rqtj>div>div:first-child>img{
   height: 184px;
   width: 170px;
-  margin-right: 1px;
+  margin:0px 3px;
 }
 .rqtj>div>div:not(:first-child)>img{
   height: 91px;
@@ -316,7 +317,8 @@ export default {
     return{
       selectedTab:'sy',
       indexSwiper:'',
-      cate:[]
+      cate:[],
+      brand:[],
     }
   },
   mounted(){
@@ -325,7 +327,9 @@ export default {
     })
     this.axios.get('/index').then(res=>{
       this.cate=res.data;     
-      console.log(this.cate)
+    })
+    this.axios.get('/brand').then(res=>{
+      this.brand=res.data;
     })
   },
   methods:{

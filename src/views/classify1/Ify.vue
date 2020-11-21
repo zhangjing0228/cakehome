@@ -190,6 +190,9 @@ div {
   margin: 0;
   padding: 0;
 }
+#ify .mint-tab-item-label{
+  margin: 15px;
+}
 #ify .mint-tabbar > .mint-tab-item.is-selected {
   color: #ffc0cb;
 }
