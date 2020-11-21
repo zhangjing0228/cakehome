@@ -6,7 +6,7 @@
     <div class="left" style="position:fixed;margin:41px 0">
    <mt-navbar class="navbar" v-model="classabc">
     <mt-tab-item id="1">人气推荐</mt-tab-item>
-    <mt-tab-item id="2">按品牌</mt-tab-item>
+    <mt-tab-item id="2">按品牌</mt-tab-item> 
     <mt-tab-item id="3">按口味</mt-tab-item>
     <mt-tab-item id="4">按人群</mt-tab-item>
    </mt-navbar>
@@ -190,7 +190,7 @@ div {
   margin: 0;
   padding: 0;
 }
-#ify .mint-tab-item-label{
+#ify .mint-tab-item-label {
   margin: 15px;
 }
 #ify .mint-tabbar > .mint-tab-item.is-selected {

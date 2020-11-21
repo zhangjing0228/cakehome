@@ -148,7 +148,7 @@ div {
 }
 .page .air {
   height: 12px;
-  background-color: rgb(249, 249, 249);
+  background-color: rgb(249, 249, 248);
 }
 .page .spec {
   padding: 18px 0;
