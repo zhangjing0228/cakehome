@@ -1,5 +1,7 @@
 <template>
-  <div class="sort">
+  <div id="ify">
+    <mt-header class="index-header" title="欢迎来到蛋糕之家"> </mt-header>
+    <div class="sort">
     <!-- 左边导航栏 -->
     <div class="left">
    <mt-navbar class="navbar" v-model="classabc">
@@ -111,6 +113,67 @@
 </mt-tab-container>
    </div>
   </div>
+  <!-- 底部 -->   
+    <div>
+        <mt-tabbar v-model="selectedTab" fixed>
+        <mt-tab-item id="sy" href="/home">
+          首页
+          <img
+            src="../../assets/mage/sy1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'sy'"
+          />
+          <img
+            src="../../assets/mage/sy.png"
+            alt=""
+            slot="icon"
+            v-else
+          />
+        </mt-tab-item>
+        <mt-tab-item id="fl" href="/ify">
+          分类
+          <img
+            src="../../assets/mage/fl1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'fl'"
+          />
+          <img src="../../assets/mage/fl.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+        <mt-tab-item id="xh" href="/flower">
+          鲜花
+          <img
+            src="../../assets/mage/xh1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'xh'"
+          />
+          <img src="../../assets/mage/xh.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+        <mt-tab-item id="gwc" href="/cart">
+          购物车
+          <img
+            src="../../assets/mage/gwc1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'gwc'"
+          />
+          <img src="../../assets/mage/gwc.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+        <mt-tab-item id="wd">
+          我的
+          <img
+            src="../../assets/mage/wd1.png"
+            alt=""
+            slot="icon"
+            v-if="selectedTab == 'wd'"
+          />
+          <img src="../../assets/mage/wd.png" alt="" slot="icon" v-else />
+        </mt-tab-item>
+      </mt-tabbar>
+    </div> 
+  </div>
 </template>
 
 <style>
@@ -126,6 +189,19 @@ h6,
 div {
   margin: 0;
   padding: 0;
+}
+#ify .mint-tabbar > .mint-tab-item.is-selected {
+  color: #ffc0cb;
+}
+#ify .mint-tab-item {
+  color: #b3b3b3;
+}
+#ify .mint-header {
+  background-color: #ffc0cb;
+  color: #fff;
+}
+#sort .mint-header {
+  background-color: #ffc0cb;
 }
 
 .sort {
@@ -312,6 +388,7 @@ body {
 export default {
   data() {
     return {
+      selectedTab:'fl',
       classabc: "1",
       classfont: [],
       classwill: []
