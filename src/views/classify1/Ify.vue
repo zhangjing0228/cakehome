@@ -12,7 +12,7 @@
    </mt-navbar>
    </div>
    <!-- 右边选择分栏 -->
-   <div class="right" style="margin:41px 0 0 23%">
+   <div class="right" style="margin:41px 0 0 24%">
 <!-- 面板区域开始 -->
 <mt-tab-container v-model="classabc">
   <!-- 人气推荐面板 -->
@@ -49,6 +49,7 @@
 <p class="wcenter f10">{{t.brand}}</p>
 </div>
 </router-link>
+<div class="filler"></div>
 
 
 
@@ -190,9 +191,6 @@ div {
   margin: 0;
   padding: 0;
 }
-#ify .mint-tab-item-label {
-  margin: 15px;
-}
 #ify .mint-tabbar > .mint-tab-item.is-selected {
   color: #ffc0cb;
 }
@@ -212,7 +210,7 @@ div {
 }
 
 .left {
-  width: 25%;
+  width: 24%;
   border-top: 1px solid rgb(200, 200, 200);
 }
 .left .mint-navbar {
@@ -220,24 +218,25 @@ div {
 }
 .left .mint-navbar .mint-tab-item.is-selected {
   border-bottom: 0px;
-  border-left: 2px red solid;
-  color: rgb(42, 42, 42);
-}
-.mint-tab-item.is-selected {
-  padding-top: 7px;
+  border-left: 2px solid red;
+  margin-bottom: 0;
 }
 .left .mint-tab-item-label {
-  margin-bottom: 20px;
-  margin-top: 15px;
   font-size: 15px;
-  margin-left: 0;
+  margin: 55px 0;
+}
+.left .mint-navbar .mint-tab-item {
+  margin: 0;
 }
 .left .mint-tab-item {
   color: rgb(102, 102, 102);
 }
-
+.left .mint-tab-item {
+  margin-bottom: 15px;
+  padding: 0;
+  margin-top: 25px;
+}
 .right {
-  position: relative;
   width: 100%;
   border: 1px solid rgb(200, 200, 200);
   border-right: 0;
@@ -296,7 +295,8 @@ div {
   width: 88px;
   height: 88px;
   border: 1px solid rgb(200, 200, 200);
-  margin: 0 0 8px 8px;
+  margin-left: 5px;
+  margin-bottom: 5px;
 }
 .brand1 img {
   height: 75%;
@@ -305,10 +305,11 @@ div {
 .brand1 p {
   color: rgb(102, 102, 102);
 }
-/* ============================== */
-body {
-  margin: 0;
+.filler {
+  height: 600px;
 }
+/* ============================== */
+
 .ruzhixq a {
   color: black;
   text-decoration: none;
@@ -347,35 +348,6 @@ body {
 }
 .sort {
   display: flex;
-}
-
-.left {
-  width: 90px;
-  border-top: 1px solid slategray;
-}
-.mint-navbar {
-  display: block;
-}
-.mint-navbar .mint-tab-item.is-selected {
-  border-bottom: 0px;
-  border-left: 2px red solid;
-  color: slategrey;
-}
-.mint-tab-item.is-selected {
-  padding: 0px;
-}
-.left .mint-tab-item-label {
-  margin-bottom: 50px;
-  margin-top: 15px;
-  font-size: 15px;
-  margin-left: 0;
-}
-
-.right {
-  width: 100%;
-  border: 1px solid slategray;
-  border-right: 0;
-  border-bottom: 0;
 }
 .roof {
   text-align: center;
