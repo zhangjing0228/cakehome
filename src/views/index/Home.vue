@@ -15,7 +15,7 @@
     <div class="dswiper">
       <mt-swipe class="swiper">
         <mt-swipe-item v-for="(n, i) of indexSwiper" :key="i">
-          <img class="img" :src="n.pic" />
+          <img class="img" :src="n.pic" />   <!--:src="n.imgUrl"  -->
         </mt-swipe-item>
       </mt-swipe>
     </div>
@@ -325,6 +325,9 @@ export default {
     this.axios.get('/flower').then((res)=>{
       this.indexSwiper = res.data.results;
     })
+    // this.axios.post('/article/findType/3').then((res)=>{
+    //   this.indexSwiper = res.data.result;
+    // })
     this.axios.get('/index').then(res=>{
       this.cate=res.data;     
     })

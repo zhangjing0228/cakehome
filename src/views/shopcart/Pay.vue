@@ -88,7 +88,7 @@
      <mt-tabbar>
       <mt-tab-item>
         <a href="">
-          银行卡支付￥234.00
+          银行卡支付￥{{totalMoney}}
         </a>
       </mt-tab-item>
     </mt-tabbar>
@@ -198,9 +198,14 @@
 import Cart from './Cart'
 import Dingdan from './Dingdan.vue'
 export default {
+  components:{
+    Dingdan,
+    Cart,
+  },
   data(){
     return{
       checked:false,
+      totalMoney:''
     }
   },
   methods:{
