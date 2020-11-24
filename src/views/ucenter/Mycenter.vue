@@ -2,10 +2,10 @@
 <!-- 顶部选项卡 -->
 <div>
 <mt-header class="header" title="个人中心">
-   <router-link to="/" slot="left">
-    <mt-button icon="back">返回</mt-button>
-  </router-link>
-  <mt-button icon="more" slot="right"></mt-button>
+    <div slot="right" class="shortcut" v-if="this.$store.state.isLogined == 1">
+        <span>您好,{{this.$store.state.userInfo.username}}</span>
+        <mt-button @click="logout">注销</mt-button>
+      </div>
 </mt-header>
 <!-- 顶部选项卡结束 -->
   <!-- 登录注册 -->
@@ -61,12 +61,19 @@
 export default {
   data(){
     return {
-    active: "1"
+    active: "1",
+     // 默认被选定的顶部选项卡及面板
+      // 默认被选定的顶部选项卡
+    selectedTab: "index"
     }
   },
   methods:{
     login(){
     this.$router.push('/login')
+    },
+     logout(){
+      this.$store.commit('logout_mutations');
+      localStorage.clear();
     }
   }
 };
