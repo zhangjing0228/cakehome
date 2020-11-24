@@ -9,8 +9,8 @@
 </mt-header>
 <!-- 顶部选项卡结束 -->
   <!-- 登录注册 -->
-  <img class="img1" src="../../assets/images/background/u=2661726564,2798034088&fm=26&gp=0.jpg" alt="">
-   <img @click="login" class="img2" src="../../assets/images/background/login.png" alt="">
+  <img class="img1" src="../../assets/images/background/u=2661726564,2798034088&fm=26&gp=0.jpg" alt="" >
+   <img @click="login" class="img2" src="../../assets/images/background/login.png" alt="" v-if="this.$store.state.isLogined == 0">
   <!-- 登录注册结束 -->
    <mt-cell title="查看订单" value="查看全部" is-link></mt-cell>
    <div>
