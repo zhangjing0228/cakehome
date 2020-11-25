@@ -1,10 +1,10 @@
 <template>
-<div>
+<div class="bg">
   <mt-header title="登录">
   <router-link to="mycenter" slot="left">
     <mt-button icon="back"></mt-button>
   </router-link>
-  <mt-button icon="more" slot="right"></mt-button>
+  <mt-button @click="register"  slot="right">注册</mt-button>
 </mt-header>
 <div>
       <mt-field
@@ -26,8 +26,13 @@
 </template>
 
 <style>
-.mint-button:after {
-    background-color:azure !important;
+.mint-button {
+  margin-top: 8px;
+    background-color:#ffc0cb !important;
+    color: #fff !important;
+}
+.mint-header{
+  background-color: #ffc0cb !important;
 }
 
 </style>

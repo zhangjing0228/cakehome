@@ -47,7 +47,7 @@
       </div>
     </div>
     <!-- 优惠卷2 -->
-    <div class="yhj1">
+    <div class="yhj1" @click="yhj1">
       <img src="../../assets/mage/yhj1.png" alt="">
     </div>
     <!-- 品牌 -->
@@ -137,7 +137,7 @@
           />
           <img src="../../assets/mage/gwc.png" alt="" slot="icon" v-else />
         </mt-tab-item>
-        <mt-tab-item id="wd">
+        <mt-tab-item id="wd" href="/mycenter">
           我的
           <img
             src="../../assets/mage/wd1.png"
@@ -372,6 +372,9 @@ export default {
     },
     yhj(){
       this.$router.push('/coupon')
+    },
+    yhj1(){
+      this.$router.push('/page?cid=8')
     },
   }
 };
