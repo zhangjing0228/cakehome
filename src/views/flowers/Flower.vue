@@ -193,11 +193,11 @@ export default {
 .flowerclass-item {
   margin-top: 3px;
   width: 32.5%;
-  background: #eee;
 }
 .flowerclass-item a {
   display: flex;
   justify-content: space-between;
+  color: #ffc0cb;
 }
 .flowerclass-item img {
   width: 50px;
@@ -210,6 +210,7 @@ export default {
   text-align: center;
   margin: 30px 0;
   font-size: 20px;
+  font-weight: 900;
 }
 .selling-list {
   display: flex;

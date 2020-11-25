@@ -161,12 +161,12 @@
   float: left;
 }
 .sousuo>div:first-child{
-  margin-left: 50px
+  margin-left: 20%;
 }
 .sousuo>div:first-child>input{
   border: 2px solid #ffc0cb;
   height: 25px;
-  width: 180px;
+  width: 100%;
   border-radius: 8px;
   padding-left: 8px;
   outline: none;
@@ -181,7 +181,7 @@
   background-color: #ffc0cb;
   color: #fff;
   height: 28px;
-  width: 50px;
+  width: 100%;
   border-radius: 8px;
   margin-left: 5px;
 }
@@ -198,12 +198,12 @@
 }
 .yhj>img{
   height: 45px;
-  width: 275px;
-  margin:10px 50px ;
+  width: 80%;
+  margin:10px 10%;
   border-radius: 10px 
 }
 .yhj1>img{
-  width: 375px;
+  width: 100%;
 }
 .xx>div{
   text-align: center;
@@ -222,70 +222,79 @@
 .pp>p:first-child{
   font-size: 30px;
   font-weight: 900;
-  margin-left: 140px;
+  text-align: center;
   margin-top: 30px;
 }
 .pp>p:nth-child(2){
   font-size: 20px;
   font-weight: 400;
-  margin-left: 124px;
+  text-align: center;
   margin-top: 10px;
   color: #b3b3b3;
 }
 .pp>div>div{
+  width: 48%;
   float: left;
   margin-top: 20px;
-  margin-left: 8px;
+  margin-left: 1%x;
 }
 .pp>div>div>img{
-  width: 174px;
+  width: 100%;
   height: 79px;
 }
 .rqtj>p:first-child{
   font-size: 30px;
   font-weight: 900;
-  margin-left: 123px;
+  text-align: center;
   margin-top: 140px;
 }
 .rqtj>p:nth-child(2){
   font-size: 20px;
   font-weight: 400;
-  margin-left: 80px;
-  margin-top: 10px;
+  text-align: center;
+  margin: 10px auto;
   color: #b3b3b3;
 }
-.rqtj>div>div:not(:last-child){
+.rqtj>div>div{
   float: left;
-  margin-top: 15px;
+  margin-top: 1px;
+}
+.rqtj>div>div:first-child{
+  width: 44%;
 }
 .rqtj>div>div:first-child>img{
-  height: 184px;
-  width: 170px;
-  margin:0px 3px;
+  height: 186px;
+  width: 100%;
+}
+.rqtj>div>div:not(:first-child){
+  width: 54%;
+  margin-left: 1%;
 }
 .rqtj>div>div:not(:first-child)>img{
   height: 91px;
-  width: 197px;
-  margin-bottom: -1px;
+  width: 100%;
+}
+.rqtj>div>div:last-child{
+  margin-bottom: 25px
 }
 .rmjx>div:first-child{
   font-size: 36px;
   font-weight: 600;
   margin-top: 20px;
-  margin-left: 100px;
+  text-align: center;
   margin-bottom: 20px;
 }
 .rmjx>div:not(:first-child)>div>img{
-  width: 180px;
+  width: 100%;
   height: 160px;
 }
 .rmjx>div:not(:first-child){
-  width: 180px;
+  width: 49%;
   float: left;
-  margin-left: 5px;
+  margin-left: 1%;
 }
 .rmjx>div:not(:first-child)>div{
-  width: 180px;
+  width: 100%;
   float: left;
   text-align: center;
   margin-top: 5px;

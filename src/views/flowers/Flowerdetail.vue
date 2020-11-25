@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="flowerdetail">
     <!-- 顶部导航开始 -->
     <mt-header class="flowertitle" :title="header">
       <router-link to="/flower" slot="left">
