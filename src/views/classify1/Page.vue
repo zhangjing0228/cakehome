@@ -11,10 +11,10 @@
     </mt-header>
     <!-- 轮播图 -->
     <div class="swipe">
-      <mt-swipe :auto="5000" :show-indicators="false" v-for="(t,i) of     wipes" :key="i">
-        <mt-swipe-item><img :src="t.img_a"></mt-swipe-item>
-        <mt-swipe-item><img :src="t.img_b"></mt-swipe-item>
-        <mt-swipe-item><img :src="t.img_c"></mt-swipe-item>
+      <mt-swipe :auto="5000" :show-indicators="false">
+        <mt-swipe-item><img :src="header.img_a"></mt-swipe-item>
+        <mt-swipe-item><img :src="header.img_b"></mt-swipe-item>
+        <mt-swipe-item><img :src="header.img_c"></mt-swipe-item>
       </mt-swipe>
     </div>
     <!-- 详情页 -->
@@ -72,10 +72,10 @@
     <!-- 图文详情 -->
     <div class="taxond imgs">图文详情</div>
     <div class="imged m">
-      <div v-for="(t,i) of wipes " :key="i">
-        <img :src="t.details_img_a">
-        <img :src="t.details_img_b">
-        <img :src="t.details_img_c">
+      <div>
+        <img :src="header.details_img_a">
+        <img :src="header.details_img_b">
+        <img :src="header.details_img_c">
         <div v-for="(t,i) of imgsss" :key="i">
           <img :src="t">
         </div>
@@ -89,19 +89,8 @@
       <mt-tab-item>咨询
         <img src="../../assets/yangjian.img/mt-tab/咨询.svg" slot="icon">
       </mt-tab-item>
-      <mt-tab-item class="reder"><span >立即订购</span></mt-tab-item>
+      <mt-tab-item class="reder"><span >加入购物车</span></mt-tab-item>
     </mt-tabbar>
-
-
-
-
-
-
-
-
-
-
-
 
   </div>
 </template>
@@ -115,16 +104,14 @@ export default {
         require("../../assets/yangjian.img/image-text/1605190807(9).jpg"),
         require("../../assets/yangjian.img/image-text/1605190807(10).jpg")
       ],
-      wipes: "",
       header: ""
     };
   },
   mounted() {
     let cid = this.$route.query.cid;
-    console.log(cid);
+    console.log(cid + "oo");
     this.axios.get("/page?cid=" + cid).then(res => {
       console.log(res.data.result);
-      this.wipes = res.data.result;
       this.header = res.data.result[0];
     });
   }

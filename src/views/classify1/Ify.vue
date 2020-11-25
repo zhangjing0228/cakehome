@@ -20,7 +20,7 @@
   <mt-tab-container-item id="1" >
     <p class="roof">————人气推荐———</p>
     <div id="moods">
-<router-link :to="{path:'/Page', query:{ cid: t.cid}}" v-for="(t,i) of classfont" :key="i">
+<div v-for="(t,i) of classfont" :key="i" @click="show(t.cid)">
     <div class="img1 moodsd">
       <img class="imgsize" :src="t.img_a">
       <p class="f10 wcenter text">{{t.title}}</p>
@@ -29,7 +29,8 @@
       <del>￥{{t.price}}</del>
       </div>
     </div>
-</router-link>
+    </div> 
+
 
 
 
@@ -368,6 +369,12 @@ export default {
       classfont: [],
       classwill: []
     };
+  },
+  methods: {
+    show(id) {
+      console.log(id);
+      this.$router.push("/page?cid=" + id);
+    }
   },
   mounted() {
     this.axios.get("/datalis").then(res => {
