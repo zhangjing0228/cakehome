@@ -206,15 +206,16 @@
   width: 375px;
 }
 .xx>div{
-  width: 70px;
+  text-align: center;
+  width: 18%;
   height: 80px;
   float: left;
   color:#b3b3b3;
-  margin-left: 20px;
+  margin-left:5%;
   font-size: 12px;
 }
 .xx>div>img{
-  width: 50px;
+  width: 100%;
   height: 50px;
   margin-bottom: 4px;
 }
