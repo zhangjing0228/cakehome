@@ -15,7 +15,7 @@
     <div class="dswiper">
       <mt-swipe class="swiper">
         <mt-swipe-item v-for="(n, i) of indexSwiper" :key="i">
-          <img class="img" :src="n.pic" />   <!--:src="n.imgUrl"  -->
+          <img class="img" :src="n.pic" />
         </mt-swipe-item>
       </mt-swipe>
     </div>
@@ -276,6 +276,7 @@
 }
 .rmjx>div:not(:first-child)>div>img{
   width: 180px;
+  height: 160px;
 }
 .rmjx>div:not(:first-child){
   width: 180px;
@@ -325,9 +326,6 @@ export default {
     this.axios.get('/flower').then((res)=>{
       this.indexSwiper = res.data.results;
     })
-    // this.axios.post('/article/findType/3').then((res)=>{
-    //   this.indexSwiper = res.data.result;
-    // })
     this.axios.get('/index').then(res=>{
       this.cate=res.data;     
     })
@@ -337,13 +335,13 @@ export default {
   },
   methods:{
     sar(){
-      this.$router.push('/flower')
+      this.$router.push('/detail')
     },
     szb(){
-      this.$router.push('/flower')
+      this.$router.push('/detail')
     },
     sxpy(){
-      this.$router.push('/flower')
+      this.$router.push('/detail')
     },
     brand1(){
       this.$router.push('/flower')
