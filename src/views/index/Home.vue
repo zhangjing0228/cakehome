@@ -15,7 +15,7 @@
     <div class="dswiper">
       <mt-swipe class="swiper">
         <mt-swipe-item v-for="(n, i) of indexSwiper" :key="i">
-          <img class="img" :src="n.pic" />
+          <img class="img" :src="n.pic" @click="swiper" />
         </mt-swipe-item>
       </mt-swipe>
     </div>
@@ -81,10 +81,12 @@
     <div class="rmjx">
       <div>-热卖精选-</div>
       <div v-for="(item,index) of cate" :key="index">
-        <div><img :src="item.img_a" alt=""/></div>
-        <div>{{item.title}}</div>
-        <div>{{item.details}}</div>
-        <div><span>￥{{item.discount_prices}}</span> <del>￥{{item.price}}</del> </div>
+        <router-link :to="`/page?cid=${item.cid}`">
+          <div><img :src="item.img_a" alt=""/></div>
+          <div>{{item.title}}</div>
+          <div>{{item.details}}</div>
+          <div><span>￥{{item.discount_prices}}</span> <del>￥{{item.price}}</del> </div>
+        </router-link>
       </div>
     </div>
     <!-- 底部 -->   
@@ -284,7 +286,7 @@
   text-align: center;
   margin-bottom: 20px;
 }
-.rmjx>div:not(:first-child)>div>img{
+.rmjx>div:not(:first-child)>a>div>img{
   width: 100%;
   height: 160px;
 }
@@ -293,25 +295,25 @@
   float: left;
   margin-left: 1%;
 }
-.rmjx>div:not(:first-child)>div{
+.rmjx>div:not(:first-child)>a>div{
   width: 100%;
   float: left;
   text-align: center;
   margin-top: 5px;
   color: #b3b3b3;
 }
-.rmjx>div:not(:first-child)>:last-child{
+.rmjx>div:not(:first-child)>a>:last-child{
   margin-top: 10px;
 }
-.rmjx>div:not(:first-child)>div:nth-child(2){
+.rmjx>div:not(:first-child)>a>div:nth-child(2){
   color: #000000a3;
   font-weight: 600;
 }
-.rmjx>div:not(:first-child)>div:last-child>span{
+.rmjx>div:not(:first-child)>a>div:last-child>span{
   color:#ec6868;
   font-size: 19px;
 }
-.rmjx>div:last-child>div:last-child{
+.rmjx>div:last-child>a>div:last-child{
   margin-bottom: 80px;
 }
 #index .mint-tabbar>.mint-tab-item.is-selected{
@@ -344,6 +346,9 @@ export default {
     })
   },
   methods:{
+    swiper(){
+      this.$router.push('/classlist/康乃馨花束')
+    },
     sar(){
       this.$router.push('/detail')
     },
