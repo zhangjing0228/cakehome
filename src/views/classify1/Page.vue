@@ -139,8 +139,8 @@ div {
 
 /* 顶部导航栏样式 */
 .mint-header {
-  background-color: #fff;
-  color: #000;
+  background-color: #ffc0cb;
+  color: #fff;
   font-size: 15px;
   height: 40px;
 }
@@ -271,7 +271,7 @@ div {
   color: red;
 }
 .mint-tab-item-label span {
-  font-size: 22px;
+  font-size: 18px;
   color: #eee !important;
   margin-top: 5px;
 }

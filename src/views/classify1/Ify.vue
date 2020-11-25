@@ -12,7 +12,7 @@
    </mt-navbar>
    </div>
    <!-- 右边选择分栏 -->
-   <div class="right" style="margin:41px 0 0 24%">
+   <div class="right" style="margin:41px 0 55px 24%">
 <!-- 面板区域开始 -->
 <mt-tab-container v-model="classabc">
   <!-- 人气推荐面板 -->
@@ -274,7 +274,7 @@ div {
 }
 .text {
   margin-top: 3px;
-  color: #B3B3B3;
+  color: #b3b3b3;
 }
 .img1 {
   margin-bottom: 25px;
@@ -283,7 +283,7 @@ div {
   margin-top: 5px;
 }
 .price :last-child {
-  color: #B3B3B3;
+  color: #b3b3b3;
   font-size: 13px;
   margin-left: 5px;
 }
@@ -295,7 +295,7 @@ div {
 .brand1 {
   width: 130px;
   height: 88px;
-  margin:5px;
+  margin: 5px;
 }
 .brand1 img {
   height: 75%;
@@ -329,7 +329,7 @@ div {
 }
 .kouwei span {
   font-size: 15px;
-  color: #B3B3B3;
+  color: #b3b3b3;
 }
 /* .kouwei {
   display: flex;
@@ -354,7 +354,7 @@ div {
 .kouwei > div {
   text-align: center;
 }
-hr{
+hr {
   border: 1px solid #ffc0cb;
 }
 </style>
