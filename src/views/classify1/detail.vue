@@ -33,12 +33,12 @@
   font-size: 18px;
   margin-bottom: 8px;
 }
-.detail p{
+.detail p {
   text-align: center;
   font-size: 20px;
   margin-bottom: 8px;
 }
-.d2{
+.d2 {
   width: 50%;
 }
 .detail #part1 {
@@ -47,11 +47,11 @@
   flex-wrap: wrap;
   padding-left: 7.5px;
   padding-right: 7.5px;
-  }
+}
 .detail img {
   width: 95%;
   height: 171px;
-  margin:0px 10px;
+  margin: 0px 10px;
   text-align: center;
 }
 .detail del {

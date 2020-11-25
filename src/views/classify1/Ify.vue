@@ -44,7 +44,7 @@
     <p class="roof">————按品牌———</p>
     <div class="brand">
 
-<router-link to='/' v-for="(t,i) of classwill" :key="i">
+<router-link to='/detail' v-for="(t,i) of classwill" :key="i">
 <div class="brand1" >
 <img :src="t.brand_img">
 <p class="wcenter f10">{{t.brand}}</p>
@@ -65,25 +65,35 @@
     <div id="moods">
     <div class="kouwei">
         <div class="ruzhixq">
-          <router-link to="/totalrenqun">
-          <img class="img3" src="../../assets/zjimg/1ruzhi.png">
+          <router-link to="/detail">
+          <div class="img3">
+            <img src="../../assets/zjimg/1ruzhi.png">
+          </div>
           <p class="p">乳脂类</p>
           <span>乳脂蛋糕采用进口品牌的优质原料，纯手工精制而成。</span>
           </router-link>
         </div>
         <hr>
+        <router-link to="/detail">
         <div>
-          <img class="img3" src="../../assets/zjimg/2musi.png">
+          <div class="img3">
+          <img  src="../../assets/zjimg/2musi.png">
+          </div>
           <p class="p">慕斯类</p>
           <span>慕斯蛋糕口感和风味的各种辅料，冷冻后食用其味无穷，成为蛋糕中的极品</span>
         </div>
+        </router-link>
         <hr>
+        <router-link to="/detail">
         <div>
-          <img class="img3" src="../../assets/zjimg/3shuiguo.png">
+          <div class="img3">
+           <img  src="../../assets/zjimg/3shuiguo.png">
+          </div>
           <p class="p">水果类</p>
-          <span>浓浓的奶香味与清新甜蜜的水果相搭配出来的浓郁甜美气息，蕴藏着甜蜜浪漫的温馨情怀，奶油的浓郁奶相结合水果的酸甜，恰到好处的口味与口感的结合，让您的感官与知觉完全得到满足。</span>
-          <hr>
+          <span>浓浓的奶香味与清新甜蜜的水果相搭配出来的浓郁甜美气息，蕴藏着甜蜜浪漫的温馨情怀，奶油的浓郁奶相结合水果的酸甜，恰到好处的口味与口感的结合，让您的感官与知觉完全得到满足。</span>          
         </div>
+        </router-link>
+        <hr>
     </div>
     </div>
   </mt-tab-container-item>
@@ -91,22 +101,22 @@
   <p class="roof">————按人群———</p>
     <div class="renqun">
       <div>
-       <router-link to="/totalrenqun">
+       <router-link to="/detail">
           <img src="../../assets/zjimg/test2.png">
        </router-link> 
       </div>
       <div>
-        <router-link to="/totalrenqun">
+        <router-link to="/detail">
           <img src="../../assets/zjimg/test22.png">
        </router-link>
       </div>
       <div>
-        <router-link to="/totalrenqun">
+        <router-link to="/detail">
           <img src="../../assets/zjimg/test23.png">
         </router-link>
       </div>
       <div>
-        <router-link to="/totalrenqun">
+        <router-link to="/detail">
           <img src="../../assets/zjimg/test24.png">
        </router-link>
       </div>
@@ -341,7 +351,11 @@ div {
 }
 .img3 {
   width: 150px;
-  margin-left: 5px;
+  padding-left: 60px;
+}
+.img3 :first-child {
+  width: 150px;
+  height: 120px;
 }
 .sort {
   display: flex;

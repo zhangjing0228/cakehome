@@ -10,7 +10,7 @@ import Coupon from '../views/index/Coupon.vue'
 import Mycenter from '../views/ucenter/Mycenter.vue'
 import Login from '../views/ucenter/Login.vue'
 import Register from '../views/ucenter/Register.vue'
-
+import Detail from '../views/classify1/Detail.vue'
 
 
 Vue.use(VueRouter);
@@ -19,6 +19,10 @@ const routes = [
   {
     path:'/mycenter',
     component:Mycenter
+  },
+  {
+    path:'/detail',
+    component:Detail
   },
   {
     path:'/login',
