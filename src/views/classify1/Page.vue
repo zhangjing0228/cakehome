@@ -92,6 +92,8 @@
       <mt-tab-item class="reder"><span >加入购物车</span></mt-tab-item>
     </mt-tabbar>
 
+
+
   </div>
 </template>
 <script>

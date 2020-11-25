@@ -165,7 +165,7 @@
         </mt-tab-item>
         <mt-tab-item id="wd">
           我的
-          <img
+          <img 
             src="../../assets/mage/wd1.png"
             alt=""
             slot="icon"
