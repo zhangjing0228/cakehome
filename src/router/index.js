@@ -7,13 +7,27 @@ import Pay from '../views/shopcart/Pay.vue'
 import ProductDetail from '../views/shopcart/ProductDetail.vue'
 import Dingdan from '../views/shopcart/Dingdan.vue'
 import Coupon from '../views/index/Coupon.vue'
-
+import Mycenter from '../views/ucenter/Mycenter.vue'
+import Login from '../views/ucenter/Login.vue'
+import Register from '../views/ucenter/Register.vue'
 
 
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path:'/mycenter',
+    component:Mycenter
+  },
+  {
+    path:'/login',
+    component:Login
+  },
+  {
+    path:'/register',
+    component:Register
+  },
   {
     path:'/coupon',
     component:Coupon

@@ -276,6 +276,7 @@
 }
 .rmjx>div:not(:first-child)>div>img{
   width: 180px;
+  height: 160px;
 }
 .rmjx>div:not(:first-child){
   width: 180px;
@@ -334,13 +335,13 @@ export default {
   },
   methods:{
     sar(){
-      this.$router.push('/flower')
+      this.$router.push('/detail')
     },
     szb(){
-      this.$router.push('/flower')
+      this.$router.push('/detail')
     },
     sxpy(){
-      this.$router.push('/flower')
+      this.$router.push('/detail')
     },
     brand1(){
       this.$router.push('/flower')

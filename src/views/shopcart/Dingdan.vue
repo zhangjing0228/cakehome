@@ -54,12 +54,7 @@
                 </li>
              </ul>  
              <ul>  
-                 <li class="send_ps">
-                    <p>商品金额</p>
-                    <div class="send_ps_money">
-                    <p>￥459.00</p>
-                    </div>
-                </li>
+                 
                 <li class="send_ps">
                     <p>退换无忧</p>
                     <div class="send_ps_money">

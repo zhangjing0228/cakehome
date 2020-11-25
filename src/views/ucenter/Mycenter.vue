@@ -1,0 +1,80 @@
+<template>
+<!-- 顶部选项卡 -->
+<div>
+<mt-header class="header" title="个人中心">
+    <div slot="right" class="shortcut" v-if="this.$store.state.isLogined == 1">
+        <span>您好,{{this.$store.state.userInfo.username}}</span>
+        <mt-button @click="logout">注销</mt-button>
+      </div>
+</mt-header>
+<!-- 顶部选项卡结束 -->
+  <!-- 登录注册 -->
+  <img class="img1" src="../../assets/images/background/u=2661726564,2798034088&fm=26&gp=0.jpg" alt="" >
+   <img @click="login" class="img2" src="../../assets/images/background/login.png" alt="" v-if="this.$store.state.isLogined == 0">
+  <!-- 登录注册结束 -->
+   <mt-cell title="查看订单" value="查看全部" is-link></mt-cell>
+   <div>
+   <mt-navbar v-model="active">
+  <mt-tab-item id="1">
+    <img src="../../assets/images/background/daifukuan.png" alt="" slot="icon">待付款
+  </mt-tab-item>
+  <mt-tab-item id="2">
+      <img src="../../assets/images/background/daifahuo.png" alt="" slot="icon">待发货
+  </mt-tab-item>
+  <mt-tab-item id="3">
+      <img src="../../assets/images/background/daishouhuo.png" alt="" slot="icon">待收货
+  </mt-tab-item>
+  <mt-tab-item id="4">
+      <img src="../../assets/images/background/daifukuan.png" alt="" slot="icon">待评价
+  </mt-tab-item>
+</mt-navbar>
+</div>
+  <div>
+  <mt-cell title="我的收藏" is-link></mt-cell>
+  <mt-cell title="优惠券" is-link></mt-cell>
+  <mt-cell title="地址管理" is-link></mt-cell>
+  <mt-cell title="意见反馈" is-link></mt-cell>
+  <mt-cell title="退出/注销" is-link></mt-cell>
+  </div>
+</div>
+</template>
+<style scoped>
+ 
+.img1{
+  width:100%;
+  height:169.72px;
+  position: relative;
+  overflow: hidden;
+}
+.img2{
+  position: absolute;
+  top:84.86px;
+  left:35px;
+}
+.mint-navbar .mint-tab-item.is-selected{
+   border-bottom:none !important;
+   color: #000 !important;
+}
+</style>
+
+<script>
+export default {
+  data(){
+    return {
+    active: "1",
+     // 默认被选定的顶部选项卡及面板
+      // 默认被选定的顶部选项卡
+    selectedTab: "index"
+    }
+  },
+  methods:{
+    login(){
+    this.$router.push('/login')
+    },
+     logout(){
+      this.$store.commit('logout_mutations');
+      localStorage.clear();
+    }
+  }
+};
+</script>

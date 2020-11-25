@@ -19,7 +19,7 @@ Vue.use(VueLazyLoad, {
   loading: require('./assets/img/common/placeholder.png')
 })
 Vue.use(MintUI);
-axios.defaults.baseURL='http://127.0.0.1:3000'
+axios.defaults.baseURL='http://127.0.0.1:3000'// http://192.168.3.29:9090
 Vue.prototype.axios = axios;
 Vue.prototype.moment=moment;
 Vue.prototype.qs=qs;
