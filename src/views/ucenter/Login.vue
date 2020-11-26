@@ -19,7 +19,7 @@
        
       </mt-field>
       <mt-button @click="handle" type="default" size="large">登录</mt-button>
-       <mt-button class="" type="default" size="large" @click="register">注册</mt-button>
+      
       </div>
      
  </div>
