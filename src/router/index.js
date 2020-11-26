@@ -10,7 +10,7 @@ import Coupon from '../views/index/Coupon.vue'
 import Mycenter from '../views/ucenter/Mycenter.vue'
 import Login from '../views/ucenter/Login.vue'
 import Register from '../views/ucenter/Register.vue'
-import Detail from '../views/classify1/Detail.vue'
+import Detail from '../views/classify1/detail.vue'
 
 
 Vue.use(VueRouter);
