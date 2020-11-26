@@ -11,8 +11,8 @@
       <div v-else class="img">&gt;.&lt;</div>
     </div>
     <div @click="login">
-      <div v-if="this.$store.state.isLogined == 1">您好,{{this.$store.state.userInfo.username}}<span @click="logout">注销</span></div>
-      <div v-else>您好，请登录......,</div>
+      <div v-if="this.$store.state.isLogined == 1">您好,{{this.$store.state.userInfo.username}} <span @click="logout"> 注销</span></div>
+      <div v-else>您好，请登录......</div>
     </div>
   </div>
   <!-- 登录注册结束 -->
@@ -129,7 +129,7 @@
   width: 250px;
   height: 40px;
   line-height: 60px;
-  margin-left: 8px;
+  margin-left: 14px;
   color: #ffc0cb;
 }
 .head img{
