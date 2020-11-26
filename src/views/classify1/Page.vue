@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="page">
 
      <!-- 顶部导航栏 -->
     <mt-header :title=header.title fixed>
@@ -136,7 +136,9 @@ div {
   margin: 0;
   padding: 0;
 }
-
+#page .mint-button{
+  margin-top: -2px;
+}
 /* 顶部导航栏样式 */
 .mint-header {
   background-color: #ffc0cb;

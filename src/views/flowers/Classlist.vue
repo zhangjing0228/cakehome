@@ -42,6 +42,9 @@ export default {
 </script>
 
 <style>
+.mint-button{
+  margin: -2px
+} 
 .flowertitle {
   background: #ffc0cb;
   color: #fff;

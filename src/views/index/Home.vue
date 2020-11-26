@@ -24,7 +24,7 @@
       <img src="../../assets/mage/yhj.png" alt="">
     </div>
     <!-- 选项栏 -->
-    <div class="xx">
+    <div class="xx" @click="xx">
       <div>
         <img src="../../assets/mage/xx1.png" alt="">
         <br>
@@ -346,6 +346,9 @@ export default {
     })
   },
   methods:{
+    xx(){
+      this.$router.push('/detail')
+    },
     swiper(){
       this.$router.push('/classlist/康乃馨花束')
     },
@@ -359,16 +362,16 @@ export default {
       this.$router.push('/detail')
     },
     brand1(){
-      this.$router.push('/flower')
+      this.$router.push('/detail')
     },
     brand2(){
-      this.$router.push('/flower')
+      this.$router.push('/detail')
     },
     brand3(){
-      this.$router.push('/flower')
+      this.$router.push('/detail')
     },
     brand4(){
-      this.$router.push('/flower')
+      this.$router.push('/detail')
     },
     yhj(){
       this.$router.push('/coupon')

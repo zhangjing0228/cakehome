@@ -1,5 +1,5 @@
 <template>
-<div class="bg">
+<div class="bg" id="login">
   <mt-header title="登录">
   <router-link to="mycenter" slot="left">
     <mt-button icon="back"></mt-button>
@@ -26,6 +26,18 @@
 </template>
 
 <style>
+.mint-field-core{
+  border-radius: 8px !important;
+  padding-left: 10px;
+}
+#login .mint-cell-wrapper{
+  background-color: #ade5fc;
+  color: #fff;
+}
+.bg{
+  background-image: url(../../assets/mage/bjt.jpeg);
+  height: 665px;
+}
 .mint-button {
   margin-top: 8px;
     background-color:#ffc0cb !important;

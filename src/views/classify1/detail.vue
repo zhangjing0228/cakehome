@@ -6,7 +6,7 @@
         <router-link slot="left" to="/ify"> 
           <mt-button icon="back"></mt-button>
         </router-link>
-          <mt-button icon="more" slot="right"></mt-button> 
+         
       </mt-header>
     </header>
     <!-- 正文 -->
@@ -27,6 +27,9 @@
   </div>
 </template>
 <style>
+.header .mint-button{
+  margin-top: -2px;
+}
 .detail header.mint-header {
   background-color: pink;
   color: white;
