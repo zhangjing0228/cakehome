@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="bg" id="login">
  <mt-header title="注册">
    <router-link to="login" slot="left">
     <mt-button icon="back"></mt-button>
