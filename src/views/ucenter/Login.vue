@@ -67,7 +67,7 @@ export default {
             //代表用户登录成功
             if(res.data.code == 1){
               //提交Mutations,以修改用户登录状态
-              this.$store.commit('login_mutations',res.data.userInfo);
+              this.$store.dispatch('login_actions',res.data.userInfo);
               //页面跳转
               this.$messagebox('登录成功')
               this.$router.push('/mycenter');

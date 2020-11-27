@@ -335,7 +335,7 @@ export default {
     }
   },
   mounted(){
-    this.axios.get('/flower').then((res)=>{
+    this.axios.get('flower').then((res)=>{
       this.indexSwiper = res.data.results;
     })
     this.axios.get('/index').then(res=>{

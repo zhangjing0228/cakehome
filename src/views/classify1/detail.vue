@@ -24,6 +24,7 @@
           </router-link>
         </div>
     </div>
+
   </div>
 </template>
 <style>
@@ -76,6 +77,12 @@ export default {
       classfont: [],
       classwill: []
     };
+  },
+  methods:{
+    addCart(){
+      let obj = {};
+      this.$store.commit('addCart', obj)
+    }
   },
   mounted() {
     this.axios.get("/datalis").then(res => {

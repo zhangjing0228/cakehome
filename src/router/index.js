@@ -49,6 +49,10 @@ const routes = [
     component:Pay
   },
   {
+    path: '',
+    redirect: '/home'
+  },
+  {
     path: '/home',
     component: Home
   },
