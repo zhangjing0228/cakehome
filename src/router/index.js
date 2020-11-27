@@ -1,16 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Index from "../views/Index.vue";
-import Home from '../views/index/Home.vue';
-import Cart from '../views/shopcart/Cart.vue';
-import Pay from '../views/shopcart/Pay.vue'
-import ProductDetail from '../views/shopcart/ProductDetail.vue'
-import Dingdan from '../views/shopcart/Dingdan.vue'
-import Coupon from '../views/index/Coupon.vue'
-import Mycenter from '../views/ucenter/Mycenter.vue'
-import Login from '../views/ucenter/Login.vue'
-import Register from '../views/ucenter/Register.vue'
-import Detail from '../views/classify1/detail.vue'
+
+const Home = () => import('../views/index/Home.vue')
+const Cart = () => import('../views/shopcart/Cart.vue')
+const Pay = () => import('../views/shopcart/Pay.vue')
+const ProductDetail = () => import('../views/shopcart/ProductDetail.vue')
+const Dingdan = () => import('../views/shopcart/Dingdan.vue')
+const Coupon = () => import('../views/index/Coupon.vue')
+const Mycenter = () => import('../views/ucenter/Mycenter.vue')
+const Login = () => import('../views/ucenter/Login.vue')
+const Register = () => import('../views/ucenter/Register.vue')
+const Detail = () => import('../views/classify1/detail.vue')
 
 
 Vue.use(VueRouter);
@@ -56,11 +56,11 @@ const routes = [
     path: '/home',
     component: Home
   },
-  {
-    path: "/",
-    name: "Index",
-    component: Index,
-  },
+  // {
+  //   path: "/",
+  //   name: "Index",
+  //   component: Index,
+  // },
   {
     path: "/cart",
     name: "cart",

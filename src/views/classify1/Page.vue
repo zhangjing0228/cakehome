@@ -112,6 +112,12 @@
         },
         methods: {
             addCart() {
+                if (localStorage.getItem('isLogined') == null || localStorage.getItem('isLogined' === '')) {
+                    this.$messagebox("订购失败", "请先登录后再进行此操作");
+                    this.$router.push('/login');
+                    return
+                }
+
                 let userInfo = JSON.parse(localStorage.getItem("userInfo"));
                 console.log(this.header)
                 let obj = {

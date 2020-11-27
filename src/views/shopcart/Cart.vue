@@ -190,7 +190,6 @@
                                     this.$messagebox("删除成功");
                                     // 刷新类表
                                     this.getCount();
-                                    this.getList();
                                     this.totalPrice();
                                 } else {
                                     this.$messagebox("删除失败")
