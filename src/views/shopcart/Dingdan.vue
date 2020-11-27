@@ -20,13 +20,15 @@
             <div>
                 <div class="address_list_item">
                     <img :src="item.img">
-                    <p>{{item.title}}</p>
+                    <p>{{item.content}}</p>
                 </div>
                 <p class="address_list_price">￥{{item.price}}</p>
                 <div class="address_list_button">
-                    <button @click="jian(item.count,index)">-</button>
-                    <input :value="item.count" disabled>
-                    <button @click="add(item.count,index)">+</button>
+<!--                    <button @click="jian(item.count,index)">-</button>-->
+<!--                    <input :value="item.count" disabled>-->
+<!--                    <button @click="add(item.count,index)">+</button>-->
+                    <p>x</p><span>{{item.count}}</span>
+
                 </div>
             </div>
         </div>
@@ -128,25 +130,35 @@
         font-size: 14px;
         padding: 15px;
         display: flex;
-        justify-content: flex-start;
+        padding-left: 50px;
+        /*justify-content: flex-start;*/
     }
 
     .address_list_item {
-        display: flex;
-        padding-left: 15px;
+        /*display: flex;*/
+        padding-left: 20px;
         font-size: 14px;
+        width: 140px;
+        height: 140px;
     }
-
+    .address_list_item p{
+        display: flex;
+        width: 150px;
+        margin-top: -150px;
+        margin-left: 170px;
+    }
     .address_list_item > img {
-        width: 100px;
-        height: 100px;
-        padding-right: 10px;
+        display: block;
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        margin-bottom: 50px;
     }
 
     .address_list_button {
-        margin-left: 70%;
-        margin-top: -5%;
-
+        margin-left: 180%;
+        margin-top: -15%;
+        display: flex;
     }
 
     .address_list_button > input {
@@ -158,15 +170,15 @@
     }
 
     .address_list_price {
-        margin-left: 35%;
-        margin-top: -15%;
+        margin-left: 130%;
+        margin-top: -25%;
         color: red;
         font-weight: bolder;
     }
 
     .address_list_button > button {
-        width: 30px;
-        height: 30px;
+        width: 100px;
+        height: 50px;
         text-align: center;
         border: none;
     }
@@ -175,12 +187,13 @@
         margin-top: 290px;
         position: fixed;
         font-size: 14px;
-        font-weight: border;
+        font-weight: bolder;
     }
 
     .send .send_ps {
         display: flex;
         margin-bottom: 20px;
+        margin-top: 50px;
     }
 
     .send .send_ps > input {
@@ -265,28 +278,29 @@
                             isList.push(this.list[i]);
                         }
                     }
-                    console.log(isList);
+                  //  console.log(isList);
                     this.$router.push({
                         path: '/pay',
-                        query: {data: isList}
+                        query: {data: isList,totalPrice:this.totalMoney}
                     })
                 }
             },
             //总价
             totalPrice() {
                 let totalMoney = 0;
+               // console.log("订单",this.list)
                 this.list.forEach((item, index) => {
 
                     totalMoney += item.price * item.count;
                     this.totalMoney = totalMoney.toFixed(2);
-                    console.log(`totalMoney:${totalMoney}`);
+                  //  console.log(`totalMoney:${totalMoney}`);
 
                 });
 
             }
         },
         created() {
-            console.log(this.$route.query)
+          //  console.log(this.$route.query)
             this.list = this.$route.query.data;
             this.totalPrice();
         }

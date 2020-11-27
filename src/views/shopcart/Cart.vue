@@ -101,12 +101,13 @@
                 } else {
                     // 结算选中的商品
                     var isList = [];
-                    for (var i in this.list) {
+                    for (let i in this.list) {
                         if (this.list[i].checked) {
                             isList.push(this.list[i]);
                         }
                     }
-                    console.log(isList);
+                    //console.log("====================================")
+                    //console.log(isList);
                     this.$router.push({
                         path: '/dingdan',
                         query: {data: isList}
@@ -116,7 +117,7 @@
             },
             // (单选)选择商品
             selectGoods(item) {
-                console.log(item);
+               // console.log(item);
                 // this.checked=!this.checked;
                 //判断是否未定义，如果没点击过按钮是没有注册的，则需要先注册checked属性
                 if (typeof item.checked == "undefined") {
@@ -125,13 +126,13 @@
                     //  如果已经注册，则设置checked否(这里不能设置为false,因为当已经注册过之后再点击为flase，那么再点击一次则为true)
                     item.checked = !item.checked;
                     item.checked ? this.checkNum++ : this.checkNum--;
-                    console.log("====", item.checked);
+                   // console.log("====", item.checked);
                 }
                 this.getCount(); //结算需要显示的数量
                 // 求总价
                 this.totalPrice();
                 // 当所有的商品都选择的时候，自动默认为全选
-                console.log("checkNum", this.checkNum, this.list.length)
+                //console.log("checkNum", this.checkNum, this.list.length)
                 if (this.checkNum === this.list.length) {
                     this.allActive = true;
                 } else {
@@ -185,10 +186,12 @@
                             //删除元素
                             this.list.splice(index, 1);
                             this.axios.post('/delCart', {uid: item.uid, pid: item.pid}).then(res => {
-                                console.log(res)
+                                //console.log(res)
                                 if (res.data.code === 1) {
                                     this.$messagebox("删除成功");
                                     // 刷新类表
+                                    this.checkNum--;
+                                    this.delProduct(item.uid, item.pid);
                                     this.getCount();
                                     this.totalPrice();
                                 } else {
@@ -203,6 +206,13 @@
                     .catch((error) => {
                     });
             },
+            delProduct(uid, pid) {
+                this.list.forEach((item, index) => {
+                    if (item.uid === uid && item.pid === pid) {
+                        this.list.slice(index, 1)
+                    }
+                })
+            },
             // 数量减方法
             sub(num, index) {
                 if (parseInt(num) <= 1) {
@@ -215,7 +225,7 @@
             },
             // 数量加方法
             plus(num, index) {
-                console.log("list", this.list)
+               // console.log("list", this.list)
                 this.list[index].count = parseInt(this.list[index].count) + 1;
                 this.getCount();
                 this.totalPrice();
@@ -269,9 +279,9 @@
 
         },
         beforeRouteLeave(to, from, next) {
-            console.log(this.list)
+            //console.log(this.list)
             this.axios.post('/updatecart', this.list).then(res => {
-                console.log(res)
+                //console.log(res)
             })
             next()
         },

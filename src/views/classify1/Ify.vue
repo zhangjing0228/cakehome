@@ -412,7 +412,7 @@
         },
         methods: {
             show(id) {
-                console.log(id);
+                //console.log(id);
                 this.$router.push("/page?cid=" + id);
             }
         },

@@ -119,7 +119,7 @@
                 }
 
                 let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-                console.log(this.header)
+                //console.log(this.header)
                 let obj = {
                     uid: userInfo.id,
                     pid: this.header.cid,
@@ -129,21 +129,21 @@
                     img: this.header.details_img_a,
                     count: 1
                 };
-                console.log(obj)
+                //console.log(obj)
                 this.axios.post("/savecart", qs.stringify(obj)).then(res => {
                     if (res.data.code === 1) {
                         this.$messagebox("加入购物车成功");
                     }
                 })
                 this.$store.commit("addCart", obj)
-                console.log("=======================")
+                //console.log("=======================")
             }
         },
         mounted() {
             let cid = this.$route.query.cid;
-            console.log(cid + "oo");
+            //console.log(cid + "oo");
             this.axios.get("/page?cid=" + cid).then(res => {
-                console.log(res.data.result);
+                //console.log(res.data.result);
                 this.header = res.data.result[0];
             });
         }

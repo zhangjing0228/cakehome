@@ -13,7 +13,7 @@
     <!-- 顶部结束 -->
     <!-- 价格开始 -->
       <div class="price">
-        <div class="price-total">￥234.00</div>
+        <div class="price-total">￥{{totalMoney}}</div>
       </div>
     <!-- 价格结束 -->
     <!-- 支付方式开始 -->
@@ -217,5 +217,8 @@ export default {
       }
     }
   },
+    created() {
+      this.totalMoney = this.$route.query.totalPrice;
+    }
 }
 </script>
