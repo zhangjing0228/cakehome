@@ -4,7 +4,7 @@
    <router-link to="login" slot="left">
     <mt-button icon="back"></mt-button>
   </router-link>
-  <mt-button icon="more" slot="right"></mt-button>
+  <mt-button  slot="right"></mt-button>
  </mt-header>
  <div>
     <mt-field
