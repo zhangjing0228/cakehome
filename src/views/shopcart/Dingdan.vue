@@ -40,7 +40,7 @@
                     <p>配送</p>
                     <div class="send_ps_time">
                         <p>快递运输 </p>
-                        <p>预计11月20日24:00前送达</p>
+                        <p>预计11月28日24:00前送达</p>
                     </div>
                 </li>
                 <li class="send_ps">
